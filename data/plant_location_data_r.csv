@@ -1,0 +1,10 @@
+﻿Martin-Beck Company Distribution System Design,,,,,
+,,,,,
+,Distribution Center,,,,Fixed
+Plant,Boston,Atlanta,Houston,Capacity,Cost($1000s)
+  Detroit,5,2,3,10000,175000
+  Toledo,4,3,4,20000,300000
+  Denver,9,7,5,30000,375000
+  Kansas City,10,4,2,40000,500000
+  St. Louis,8,4,3,30000,
+Demand,30000,20000,20000,,

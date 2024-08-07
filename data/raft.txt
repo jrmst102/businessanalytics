@@ -1,0 +1,9 @@
+Start Time	End Time	LBS Applied	Specialist
+8:04 AM	9:04 AM	2.3829	Raft
+9:59 AM	10:26 AM	2.5323	Raft
+11:02 AM	11:44 AM	1.7173	Raft
+12:16 PM	1:20 PM	3.1725	Raft
+1:58 PM	2:24 PM	1.8561	Raft
+2:39 PM	3:34 PM	1.7417	Raft
+4:09 PM	5:02 PM	2.6944	Raft
+5:29 PM	6:28 PM	2.6074	Raft

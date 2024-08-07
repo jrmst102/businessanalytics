@@ -1,0 +1,9 @@
+Start Time	End Time	LBS Applied	Specialist
+8:00 AM	8:44 AM	2.502	Suen
+9:13 AM	10:14 AM	2.0278	Suen
+10:44 AM	11:50 AM	2.1324	Suen
+12:06 PM	12:46 PM	1.6825	Suen
+1:20 PM	1:55 PM	1.8404	Suen
+2:11 PM	3:05 PM	2.7546	Suen
+3:28 PM	3:59 PM	2.1689	Suen
+4:43 PM	5:12 PM	3.2488	Suen

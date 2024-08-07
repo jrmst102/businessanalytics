@@ -1,0 +1,54 @@
+European City,Change in European Hotel Cost,U.S. City,Change in U.S. Hotel Cost
+Ljubljana,-0.009,Birmingham,0.074
+Geneva,0,Pittsburgh,0.089
+Zagreb,0.06,Indianapolis,-0.013
+Stockholm,0.041,Norfolk,0.07
+Tirana,0.082,Boston,0.077
+Riga,0.076,Winston-Salem,0.074
+Istanbul,0.021,Stockton,0.021
+Bucharest,0.073,Laredo,0.024
+Budapest,0.045,Corpus Christi,0.088
+Minsk,0.023,Portland,0.02
+Rome,0.033,St. Paul,0.061
+Antwerp,0.012,Memphis,0.086
+Reykjavik,-0.002,Virginia Beach,0.052
+Düsseldorf,0.044,Newark,-0.001
+Kraków,0.071,Austin,0.077
+Frankfurt,-0.002,San Francisco,0.102
+Vilnius,0.057,Greensboro,0.053
+Timisora,0.005,Nashville-Davidson,0.03
+Helsinki,0.072,Chicago,0.085
+Odessa,0.084,El Paso,0.027
+Pristina,0.006,Omaha,0.028
+Tallin,0.039,San Diego,0.08
+Banja Luka,0.082,Madison,0.105
+Chisinau,0.015,Fort Worth,0.024
+Belfast,0.032,Cincinnati,0.085
+Zurich,0.041,Tampa,0.001
+Copenhagen,-0.005,Sacramento,0
+Bratislava,0.02,Honolulu,0.047
+Ankara,0.057,St. Petersburg,0.096
+Athens,0.069,Lincoln,0.006
+Brussels,0.059,Oakland,0.082
+Kryvy Rig,0.073,St. Louis,0.064
+Volgograd,0.038,Lubbock,0.018
+Novi Sad,0.079,Wichita,0.003
+Belgrade,-0.016,New York City,0.043
+Tblisi,0.052,Orlando,0.071
+Zagreb,-0.008,San Jose,0.079
+Sarajevo,0.083,Atlanta,0
+St Petersburg,0.071,Dallas,0.106
+Kiev,0.012,Cleveland,0.015
+Glasgow,-0.004,Tulsa,0.102
+Split,0.055,Baton Rouge,0.089
+Sofia,0.057,Jacksonville,0.057
+Amsterdam,0.019,Minneapolis,0.064
+Skopje,0.053,Detroit,-0.001
+Vilnius,0.036,Los Angeles,0.027
+Essen,0.055,Anchorage,-0.021
+,,Jersey ,0.016
+,,Washington,0.035
+,,Durham,0.057
+,,Phoenix,0.01
+,,Anaheim,-0.011
+,,Philadelphia,0.02

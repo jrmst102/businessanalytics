@@ -1,0 +1,241 @@
+Movie,Year,Title,OscarNominations,GoldenGlobes,Genre,Winner
+1,1985,A Soldier's Story,3,0,drama,No
+2,1985,Places in the Heart,7,1,drama,No
+3,1985,The Killing Fields,7,1,historical-drama,No
+4,1985,A Passage to India,11,3,historical-drama,No
+5,1985,Amadeus,11,4,historical-drama,Yes
+6,1986,Prizzi's Honor,8,4,dark comedy,No
+7,1986,Kiss of the Spider Woman,4,0,drama,No
+8,1986,Witness,8,0,thriller,No
+9,1986,The Color Purple,11,1,drama,No
+10,1986,Out of Africa,11,3,romantic-drama,Yes
+11,1987,Hannah and Her Sisters,7,1,comedy-drama,No
+12,1987,Children of a Lesser God,5,1,romantic-drama,No
+13,1987,A Room with a View,8,1,romantic-drama,No
+14,1987,The Mission,7,2,historical-drama,No
+15,1987,Platoon,8,3,historical-drama,Yes
+16,1988,Hope and Glory,5,1,comedy-drama,No
+17,1988,Broadcast News,7,0,comedy-drama,No
+18,1988,Fatal Attraction,6,0,thriller,No
+19,1988,Moonstruck,6,2,comedy-drama,No
+20,1988,The Last Emperor,9,4,historical-drama,Yes
+21,1989,Working Girl,6,4,comedy-drama,No
+22,1989,The Accidental Tourist,4,0,romantic-drama,No
+23,1989,Mississippi Burning,7,0,thriller,No
+24,1989,Dangerous Liaisons,7,0,romantic-drama,No
+25,1989,Rain Man,8,2,drama,Yes
+26,1990,Field of Dreams,3,0,drama,No
+27,1990,Dead Poets Society,4,0,comedy-drama,No
+28,1990,My Left Foot,5,0,comedy-drama,No
+29,1990,Driving Miss Daisy,9,3,drama,Yes
+30,1990,Born on the Fourth of July,8,4,drama,No
+31,1991,Awakenings,3,0,historical-drama,No
+32,1991,Goodfellas,6,0,historical-drama,No
+33,1991,The Godfather Part III,7,0,drama,No
+34,1991,Ghost,5,1,romantic-drama,No
+35,1991,Dances With Wolves,12,3,drama,Yes
+36,1992,The Silence of the Lambs,7,1,thriller,Yes
+37,1992,The Prince of Tides,7,1,romantic-drama,No
+38,1992,JFK,8,1,thriller,No
+39,1992,Bugsy,10,1,historical-drama,No
+40,1992,Beauty and the Beast,6,3,animation,No
+41,1993,A Few Good Men,4,0,drama,No
+42,1993,The Crying Game,6,0,romantic-drama,No
+43,1993,Scent of a Woman,4,3,drama,No
+44,1993,Howards End,9,1,romantic-drama,No
+45,1993,Unforgiven,9,2,drama,Yes
+46,1994,In the Name of the Father,7,0,historical-drama,No
+47,1994,The Remains of the Day,8,0,romantic-drama,No
+48,1994,The Fugitive,7,1,thriller,No
+49,1994,The Piano,8,1,drama,No
+50,1994,Schindler's List,12,3,historical-drama,Yes
+51,1995,Quiz Show,4,0,historical-drama,No
+52,1995,Four Weddings and a Funeral,2,1,comedy-drama,No
+53,1995,The Shawshank Redemption,7,0,drama,No
+54,1995,Pulp Fiction,7,1,drama,No
+55,1995,Forrest Gump,13,3,comedy-drama,Yes
+56,1996,Babe,7,1,comedy-drama,No
+57,1996,The Postman (Il Postino),5,0,comedy-drama,No
+58,1996,Apollo 13,9,0,drama,No
+59,1996,Sense and Sensibility,7,2,drama,No
+60,1996,Braveheart,10,1,historical-drama,Yes
+61,1997,Fargo,7,0,dark comedy,No
+62,1997,Jerry Maguire,5,1,comedy-drama,No
+63,1997,Secrets & Lies,5,1,drama,No
+64,1997,Shine,7,1,horror,No
+65,1997,The English Patient,12,2,historical-drama,Yes
+66,1998,The Full Monty,4,0,comedy,No
+67,1998,As Good as it Gets,7,3,comedy-drama,No
+68,1998,L.A. Confidential,9,1,drama,No
+69,1998,Good Will Hunting,9,1,drama,No
+70,1998,Titanic,14,4,drama,Yes
+71,1999,Life is Beautiful,7,0,comedy-drama,No
+72,1999,The Thin Red Line,7,0,historical-drama,No
+73,1999,Elizabeth,7,1,historical-drama,No
+74,1999,Saving Private Ryan,11,2,historical-drama,No
+75,1999,Shakespeare in Love,13,3,comedy,Yes
+76,2000,The Green Mile,4,0,drama,No
+77,2000,The Sixth Sense,6,0,thriller,No
+78,2000,The Cider House Rules,7,0,romantic-drama,No
+79,2000,The Insider,7,0,romantic-drama,No
+80,2000,American Beauty,8,3,drama,Yes
+81,2001,Chocolat,5,0,thriller,No
+82,2001,Erin Brockovich,5,1,drama,No
+83,2001,Traffic,5,2,thriller,No
+84,2001,"Crouching Tiger, Hidden Dragon",10,2,drama,No
+85,2001,Gladiator,12,2,historical-drama,Yes
+86,2002,In the Bedroom,5,1,drama,No
+87,2002,Gosford Park,7,1,black comedy,No
+88,2002,The Lord of the Rings: The Fellowship of the Ring,13,0,fantasy,No
+89,2002,Moulin Rouge,8,3,romantic-drama,No
+90,2002,A Beautiful Mind,8,4,historical-drama,Yes
+91,2003,The Lord of the Rings: The Two Towers,6,0,fantasy,No
+92,2003,The Pianist,7,0,historical drama,No
+93,2003,The Hours,9,2,drama,No
+94,2003,Gangs of New York,10,2,historical-drama,No
+95,2003,Chicago,13,3,black comedy,Yes
+96,2004,Seabiscuit,7,0,drama,No
+97,2004,Master and Commander: The Far Side of the World,10,0,historical-drama,No
+98,2004,Mystic River,6,2,drama,No
+99,2004,Lost in Translation,4,3,comedy,No
+100,2004,The Lord of the Rings: The Return of the King,11,4,fantasy,Yes
+101,2005,Sideways,5,2,comedy-drama,No
+102,2005,Finding Neverland,7,0,fantasy,No
+103,2005,Ray,6,1,drama,No
+104,2005,Million Dollar Baby,7,2,drama,Yes
+105,2005,The Aviator,11,3,historical-drama,No
+106,2006,Crash,6,0,drama,Yes
+107,2006,Brokeback Mountain,8,4,drama,No
+108,2006,Capote,5,1,historical-drama,No
+109,2006,"Good Night, and Good Luck",6,0,historical-drama,No
+110,2006,Munich,5,0,drama,No
+111,2007,Babel,7,1,drama,No
+112,2007,The Departed,5,1,drama,Yes
+113,2007,Letters from Iwo Jima,4,1,historical-drama,No
+114,2007,Little Miss Sunshine,4,0,comedy-drama,No
+115,2007,The Queen,6,2,drama,No
+116,2008,Atonement,7,2,romantic-drama,No
+117,2008,Juno,4,0,comedy-drama,No
+118,2008,Michael Clayton,7,0,thriller,No
+119,2008,There Will Be Blood,8,1,drama,No
+120,2008,No Country For Old Mean,8,2,thriller,Yes
+121,2009,The Curious Case of Benjamin Button,13,0,drama,No
+122,2009,Frost / Nixon,5,0,historical-drama,No
+123,2009,Milk,8,0,comedy-drama,No
+124,2009,The Reader,5,1,romantic-drama,No
+125,2009,Slumdog Millionaire,10,4,romantic-drama,Yes
+126,2010,The Hurt Locker,9,0,thriller,Yes
+127,2010,Avatar,9,2,fantasy,No
+128,2010,The Blind Side,2,1,historical-drama,No
+129,2010,District 9,4,0,fantasy,No
+130,2010,An Education,3,0,drama,No
+131,2010,Inglourious Bastards,8,1,drama,No
+132,2010,Precious,6,1,drama,No
+133,2010,A Serious Man,2,0,comedy-drama,No
+134,2010,Up,5,2,animation,No
+135,2010,Up in the Air,6,0,comedy-drama,No
+136,2011,The King's Speech,12,1,historical-drama,Yes
+137,2011,Black Swan,5,1,thriller,No
+138,2011,The Fighter,7,2,drama,No
+139,2011,Inception,8,0,fantasy,No
+140,2011,The Kids Are All Right,4,2,comedy-drama,No
+141,2011,127 Hours,6,0,historical-drama,No
+142,2011,The Social Network,8,4,historical-drama,No
+143,2011,Toy Story 3,5,1,animation,No
+144,2011,True Grit,10,0,drama,No
+145,2011,Winter's Bone,4,0,drama,No
+146,2012,The Artist,10,3,comedy-drama,Yes
+147,2012,The Descendants,5,2,comedy-drama,No
+148,2012,Extremely Loud and Incredibly Close,2,0,drama,No
+149,2012,The Help,4,1,drama,No
+150,2012,Midnight in Paris,4,1,comedy,No
+151,2012,Moneyball,6,0,drama,No
+152,2012,The Tree of Life,3,0,drama,No
+153,2012,War Horse,6,0,historical-drama,No
+154,2013,Argo,7,1,thriller,Yes
+155,2013,Amour,5,1,romantic-drama,No
+156,2013,Beasts of the Southern Wild,4,0,fantasy,No
+157,2013,Django Unchained,5,2,drama,No
+158,2013,Les Miserables,8,3,romantic-drama,No
+159,2013,Life of Pi,11,1,drama,No
+160,2013,Lincoln,12,1,historical-drama,No
+161,2013,Silver Linings Playbook,8,1,comedy-drama,No
+162,2013,Zero Dark Thirty,5,1,thriller,No
+163,2014,12 Years a Slave,6,1,historical-drama,Yes
+164,2014,American Hustle,10,3,black comedy,No
+165,2014,Captain Phillips,6,0,thriller,No
+166,2014,Dallas Buyers Club,6,2,historical-drana,No
+167,2014,Gravity,10,1,fantasy,No
+168,2014,Her,5,1,fantasy,No
+169,2014,Nebraska,6,0,comedy-drama,No
+170,2014,Philomena,4,0,drama,No
+171,2014,The Wolf of Wall Street,5,1,black comedy,No
+172,2015,Birdman,9,2,black comedy,Yes
+173,2015,American Sniper,6,0,historical-drama,No
+174,2015,Boyhood,6,3,drama,No
+175,2015,The Grand Budapest Hotel,9,1,drama,No
+176,2015,The Imitation Game,8,0,drama,No
+177,2015,Selma,2,1,historical-drama,No
+178,2015,The Theory of Everything,5,2,romantic-drama,No
+179,2015,Whiplash,5,1,drama,No
+180,2016,Spotlight,6,0,historical-drama,Yes
+181,2016,The Big Short,5,0,comedy-drama,No
+182,2016,Bridge of Spies,6,0,thriller,No
+183,2016,Brooklyn,3,0,drama,No
+184,2016,Mad Max: Fury Road,10,0,fantasy,No
+185,2016,The Martian,7,2,fantasy,No
+186,2016,The Revenant,12,3,drama,No
+187,2016,Room,4,1,drama,No
+188,2017,Moonlight,8,1,drama,Yes
+189,2017,Arrival,8,0,fantasy,No
+190,2017,Fences,4,1,drama ,No
+191,2017,Hacksaw Ridge,6,0,historical-drama,No
+192,2017,Hell or High Water,4,0,drama,No
+193,2017,Hidden Figures,3,0,historical-drama,No
+194,2017,La La Land,14,7,comedy-drama,No
+195,2017,Lion ,6,0,historical-drama,No
+196,2017,Manchester by the Sea,6,1,drama,No
+197,2018,The Shape of Water,13,2,fantasy,Yes
+198,2018,Call Me by Your Name,4,2,romantic-drama,No
+199,2018,Darkest Hour,6,1,historical-drama,No
+200,2018,Dunkirk,8,0,historical-drama,No
+201,2018,Get Out,4,0,horror,No
+202,2018,Lady Bird,5,2,comedy-drama,No
+203,2018,Phantom Thread,6,0,romantic-drama,No
+204,2018,The Post,2,0,thriller,No
+205,2018,"Three Billboards Outside Ebbing, Missouri",7,4,drama,No
+206,2019,Green Book,5,3,comedy-drama,Yes
+207,2019,Black Panther,7,0,fantasy,No
+208,2019,Blackklansman,6,0,thriller,No
+209,2019,Bohemian Rhapsody,5,2,drama,No
+210,2019,The Favourite,10,1,comedy,No
+211,2019,Roma ,10,0,drama,No
+212,2019,A Star is Born,8,1,romantic-drama,No
+213,2019,Vice,8,1,thriller,No
+214,2020,Parasite,6,1,thriller,Yes
+215,2020,Ford v Ferrari,4,0,drama,No
+216,2020,The Irishman,10,0,historical-drama,No
+217,2020,Jojo Rabbit,6,0,comedy-drama,No
+218,2020,Joker,11,2,fantasy,No
+219,2020,Little Women,3,0,drama,No
+220,2020,Marriage Story,6,1,romantic comedy,No
+221,2020,1917,10,2,historical-drama,No
+222,2020,Once Upon a Time…in Hollywood,10,3,drama,No
+223,2021,Nomadland,6,2,drama,Yes
+224,2021,The Father,6,0,drama,No
+225,2021,Judas and the Black Messiah,6,1,historical-drama,No
+226,2021,Mank,10,0,historical-drama,No
+227,2021,Minari,6,1,drama,No
+228,2021,Promising Young Woman,5,0,thriller,No
+229,2021,Sound of Metal,6,0,drama,No
+230,2021,The Trial of the Chicago 7,6,1,drama,No
+231,2022,Coda,3,0,comedy-drama,Yes
+232,2022,Belfast,7,1,drama,No
+233,2022,Don't Look Up,4,0,black comedy,No
+234,2022,Drive My Car,4,1,drama,No
+235,2022,Dune,10,1,fantasy,No
+236,2022,King Richard,6,1,drama,No
+237,2022,Licorice Pizza,3,0,romantic-comedy,No
+238,2022,Nightmare Alley,4,1,thriller,No
+239,2022,The Power of the Dog,12,3,drama,No
+240,2022,West Side Story,11,3,romantic-drama,No
