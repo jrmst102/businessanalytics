@@ -1,0 +1,101 @@
+CUSTOMER_ID,PRODUCT_ID,PRODUCT_NAME,STORE,PURCHASED_QTY,UNIT_COST,TOTAL_AMT,PROMOTION,BRAND_RUNS,LAST_VISIT_DAYS,NUMBER_RETURNS
+99,12,Orange Juice Concentrate,"fairfield, ct",22,2.99,65.78,No,4,33,6
+38,13,Grape JUICE Concentrate,"new haven, ct",7,3.75,26.25,Yes,4,10,0
+99,14,COLA soda,"greenwich, ct",15,4.25,63.75,No,2,53,0
+24,15,Orange SODA,"white plains, ny",23,2.99,68.77,Yes,2,16,3
+4,16,Sparkling Water,"new york, ny",16,3.25,52,Yes,1,116,1
+3,17,Apple Juice Concentrate,"stamford, ct",19,4.5,85.5,Yes,1,113,0
+86,18,Milk Organic 2%,"edison, nj",16,5.75,92,No,1,80,0
+36,19,Milk Organic 1%,"newark, nj",14,4.45,62.3,Yes,3,45,6
+38,20,Chocolate DRINK milk,"union, nj",19,5.25,99.75,Yes,4,38,9
+17,21,Watermelon Juice Concentrate,"nyack, ny",22,2.75,60.5,No,1,53,7
+27,22,LEMON juice concentrate,"bridgeport, ct",15,2.99,44.85,No,1,53,8
+71,12,,"madison, ct",10,2.99,29.9,Yes,2,55,4
+51,13,Grape JUICE Concentrate,"clinton, ct",4,3.75,15,No,3,47,4
+93,14,COLA soda,"darien, ct",16,4.25,68,No,0,54,1
+66,15,Orange SODA,"new rochelle, ny",19,2.99,56.81,No,4,,1
+82,16,Sparkling Water,"mamaroneck, ny",10,3.25,32.5,No,3,,5
+69,17,Apple Juice Concentrate,"yonkers, ny",11,4.5,49.5,No,0,,3
+51,18,Milk Organic 2%,"bedford, ny",8,5.75,46,Yes,4,,1
+33,19,Milk Organic 1%,"state island, ny",8,4.45,35.6,Yes,4,,0
+57,20,Chocolate DRINK milk,"brunswick, nj",20,5.25,105,Yes,2,,7
+25,21,Watermelon Juice Concentrate,"fairfield, ct",6,2.75,16.5,No,3,,0
+13,22,LEMON juice concentrate,"new haven, ct",12,2.99,35.88,No,4,,10
+94,12,Orange Juice Concentrate,"greenwich, ct",8,2.99,23.92,Yes,1,,5
+62,13,Grape JUICE Concentrate,"white plains, ny",1,3.75,3.75,Yes,1,,9
+97,14,COLA soda,"new york, ny",1,4.25,4.25,No,1,,3
+26,15,Orange SODA,"stamford, ct",1,2.99,2.99,Yes,0,,9
+44,16,Sparkling Water,"edison, nj",16,,0,No,4,91,1
+9,17,Apple Juice Concentrate,"newark, nj",1,4.5,4.5,Yes,3,106,9
+56,18,Milk Organic 2%,"union, nj",6,5.75,34.5,Yes,4,45,10
+37,19,Milk Organic 1%,"nyack, ny",22,4.45,97.9,No,3,120,8
+96,20,Chocolate DRINK milk,"bridgeport, ct",11,5.25,57.75,No,2,102,2
+45,21,Watermelon Juice Concentrate,"madison, ct",16,2.75,44,Yes,3,90,3
+46,22,LEMON juice concentrate,"clinton, ct",4,2.99,11.96,Yes,2,41,0
+50,12,Orange Juice Concentrate,"darien, ct",17,2.99,50.83,Yes,0,103,8
+47,13,Grape JUICE Concentrate,"new rochelle, ny",5,3.75,18.75,Yes,0,97,0
+70,14,COLA soda,"mamaroneck, ny",24,4.25,102,No,3,43,2
+99,15,Orange SODA,"yonkers, ny",10,2.99,29.9,No,2,117,6
+2,16,Sparkling Water,"bedford, ny",1,3.25,3.25,Yes,0,37,4
+3,17,Apple Juice Concentrate,"state island, ny",9,4.5,40.5,Yes,4,70,4
+10,18,Milk Organic 2%,"brunswick, nj",24,5.75,138,Yes,4,77,10
+62,19,Milk Organic 1%,"captree, ny",11,4.45,48.95,Yes,4,71,8
+11,20,Chocolate DRINK milk,"atlantic city, nj",24,5.25,126,No,1,114,8
+58,21,Watermelon Juice Concentrate,"parsipanny, nj",6,2.75,16.5,Yes,2,39,7
+15,22,LEMON juice concentrate,"islip, ny",22,2.99,65.78,Yes,1,86,10
+30,12,Orange Juice Concentrate,"brookhaven, ny",21,2.99,62.79,No,1,61,1
+43,13,Grape JUICE Concentrate,"buffalo, ny",10,3.75,37.5,Yes,4,93,8
+13,14,COLA soda,"oyster bay, ny",20,4.25,85,No,0,1,7
+21,15,Orange SODA,"ramapo, ny",10,2.99,29.9,No,3,120,6
+45,16,Sparkling Water,"albany, ny",24,3.25,78,Yes,2,52,1
+4,17,Apple Juice Concentrate,"syracuse, ny",16,4.5,72,No,3,107,5
+92,18,Milk Organic 2%,"huntington, ny",14,5.75,80.5,Yes,3,13,2
+49,19,Milk Organic 1%,"mount vernon, ny",8,4.45,35.6,No,1,47,5
+69,20,Chocolate DRINK milk,"utica, ny",23,5.25,120.75,No,3,48,3
+50,21,Watermelon Juice Concentrate,"rye, ny",14,2.75,38.5,No,1,12,8
+74,22,LEMON juice concentrate,"rye brook, ny",21,2.99,62.79,Yes,0,24,9
+47,12,Orange Juice Concentrate,"freeport, ny",3,2.99,8.97,No,3,72,3
+93,13,Grape JUICE Concentrate,"carmel, ny",23,3.75,86.25,Yes,4,50,2
+98,14,COLA soda,"long beach, ny",19,4.25,80.75,Yes,0,58,0
+56,15,Orange SODA,,22,2.99,65.78,Yes,3,,6
+63,16,Sparkling Water,"port chester, ny",8,3.25,26,Yes,1,,1
+45,17,Apple Juice Concentrate,"paterson, nj",2,4.5,9,No,2,,2
+14,18,Milk Organic 2%,"trenton, nj",13,5.75,74.75,No,2,,10
+89,19,Milk Organic 1%,"toms river, nj",3,4.45,13.35,No,3,,9
+50,20,Chocolate DRINK milk,"elizabeth, nj",8,5.25,42,Yes,4,,7
+14,21,Watermelon Juice Concentrate,"camden, nj",13,2.75,35.75,No,1,,9
+20,22,LEMON juice concentrate,"bayonne, nj",3,2.99,8.97,No,4,,4
+69,12,Orange Juice Concentrate,"piscataway, nj",17,2.99,50.83,No,4,,10
+16,13,Grape JUICE Concentrate,"jackson, nj",2,3.75,7.5,No,2,,2
+26,14,COLA soda,"north bergen, nj",19,,0,Yes,2,,5
+68,15,Orange SODA,"middletown, nj",21,2.99,62.79,Yes,0,,
+4,16,Sparkling Water,"gloucester, nj",10,3.25,32.5,Yes,4,,9
+7,17,Apple Juice Concentrate,"cherry hill, nj",22,4.5,99,No,2,,8
+74,18,Milk Organic 2%,"egg harbor, nj",23,5.75,132.25,No,0,,1
+24,19,Milk Organic 1%,"teaneck, nj",6,4.45,26.7,Yes,2,,8
+26,20,Chocolate DRINK milk,"berkeley, nj",8,5.25,42,No,0,,4
+58,21,Watermelon Juice Concentrate,"hackensack, nj",13,2.75,35.75,No,1,,8
+55,22,LEMON juice concentrate,"fort lee, nj",15,2.99,44.85,No,2,,1
+57,12,Orange Juice Concentrate,"union, nj",15,2.99,44.85,No,1,,7
+35,13,Grape JUICE Concentrate,"nyack, ny",6,3.75,22.5,No,2,,9
+7,14,COLA soda,"bridgeport, ct",8,4.25,34,Yes,3,,6
+6,15,Orange SODA,"madison, ct",12,2.99,35.88,Yes,3,,2
+67,16,Sparkling Water,"clinton, ct",19,3.25,61.75,Yes,1,4,1
+78,17,Apple Juice Concentrate,"darien, ct",12,4.5,54,No,4,31,0
+1,18,Milk Organic 2%,"new rochelle, ny",1,5.75,5.75,No,1,,10
+83,19,Milk Organic 1%,"mamaroneck, ny",18,4.45,80.1,No,2,,0
+64,20,Chocolate DRINK milk,"yonkers, ny",,5.25,0,Yes,2,,10
+57,21,Watermelon Juice Concentrate,"bedford, ny",13,2.75,35.75,No,4,,3
+81,22,LEMON juice concentrate,"state island, ny",7,2.99,20.93,Yes,0,,5
+100,12,Orange Juice Concentrate,"brunswick, nj",1,2.99,2.99,Yes,0,,7
+5,13,Grape JUICE Concentrate,"captree, ny",18,3.75,67.5,Yes,1,,1
+15,14,COLA soda,"atlantic city, nj",17,4.25,72.25,No,0,,4
+97,15,,"parsipanny, nj",13,2.99,38.87,No,0,,6
+38,16,Sparkling Water,"islip, ny",5,3.25,16.25,Yes,3,,2
+77,17,Apple Juice Concentrate,,14,4.5,63,No,1,,10
+98,18,Milk Organic 2%,"buffalo, ny",19,,0,No,1,,4
+92,19,Milk Organic 1%,"oyster bay, ny",1,4.45,4.45,No,0,,10
+68,20,Chocolate DRINK milk,"ramapo, ny",4,5.25,21,Yes,2,,7
+41,21,Watermelon Juice Concentrate,"albany, ny",4,2.75,11,No,2,,3
+59,22,LEMON juice concentrate,"syracuse, ny",7,2.99,20.93,Yes,1,57,8
+2,21,Watermelon Juice Concentrate,"ewing, nj",19,2.75,52.25,No,3,26,3

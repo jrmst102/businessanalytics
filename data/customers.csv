@@ -1,0 +1,101 @@
+CUSTOMER_ID,CUSTOMER_NAME,CUSTOMER_AGE,CUSTOMER_GENDER,CITY,STATE,ANNUAL_PURCHASES,ANNUAL_VISITS,LAST_VISIT_DAYS,NUMBER_RETURNS
+1,Joe Black,23,M,Westminster,CA," $1,071 ",13,3,3
+2,JOHN Michels,42,M,Napa,CA," $6,442 ",29,46,4
+3,Christina YANG,34,F,Parma,OH," $11,588 ",21,104,1
+4,Leo Wong,65,M,Lehi,UT," $5,053 ",23,79,1
+5,Mark Matters,32,M,Palm Beach Gardens,FL," $14,425 ",13,94,3
+6,Julio Caesar,43,M,Aliso Viejo,CA," $18,267 ",6,93,2
+7,Chen Zhang,65,M,Richland,WA," $1,006 ",4,59,7
+8,ulysses Gazelles,32,M,Duluth,MI," $13,884 ",3,59,1
+9,Delano Demons,12,M,Tampa,FA," $15,916 ",19,16,10
+10,Juan Charles,45,M,Stanton,CA," $10,563 ",28,79,7
+11,Quincy Bobcats,65,M,Hamilton,OH," $12,714 ",23,100,10
+12,Lie Nielsen,,M,Oceanside,CA," $19,961 ",11,24,0
+13,Marcus Aurelious,65,M,New York,NY," $4,492 ",1,66,3
+14,Fitzgeralds Hawks,32,F,Stamford,CT," $8,376 ",28,31,0
+15,Liu Wang,54,F,Long Island City,NY," $4,372 ",14,37,2
+16,Xi Zhao,43,F,Kokomo,IN," $18,291 ",15,36,6
+17,Ishaan Priyanka,54,F,Amarillo,TX," $18,023 ",10,46,3
+18,Aditya Kayal,23,F,Chico,CA," $7,082 ",23,3,4
+19,Arjun Aggarwal,23,M,New Haven,CT," $7,022 ",25,102,10
+20,Jaiden Jacobs,65,F,Boston,MA," $7,961 ",9,60,2
+21,Katrine Swift,33,F,Providence,RI," $4,898 ",17,31,7
+22,Lonzo Rice,23,M,Rochester,NY," $3,336 ",18,34,5
+23,Ms. Citlalli Abshire,45,F,Mamaroneck,NY," $6,700 ",2,66,2
+24,Carolyn BARTELL,34,F,White Plains,NY," $8,561 ",15,114,1
+25,Laverne Bashirian,23,F,Edison,NJ," $7,985 ",30,25,8
+26,Cortez Nicolas III,35,M,Newark,NJ," $9,661 ",14,116,0
+27,Sigurd Christiansen,37,M,Westminster,CA," $16,844 ",16,32,4
+28,Lillie Fahey,48,F,Napa,CA," $1,311 ",26,34,3
+29,Christina Schoen,,F,Parma,OH," $14,921 ",4,61,6
+30,Mr. Ophelia Pagac,32,F,Lehi,UT," $15,641 ",23,33,1
+31,Luther Homenick,56,F,Palm Beach Gardens,FL," $10,057 ",23,58,1
+32,Erica Lemke,33,M,Aliso Viejo,CA," $7,658 ",19,104,1
+33,Kelsi Hahn,45,F,Richland,WA," $7,366 ",27,85,8
+34,Burdette Medhurst,34,F,Duluth,MI," $2,428 ",17,21,6
+35,Hattie Bechtelar,23,F,Tampa,FA," $14,477 ",14,31,6
+36,Abigale Bernhard,,F,Stanton,CA," $2,291 ",9,96,5
+37,Remington Buckridge,34,F,Hamilton,OH," $15,731 ",9,60,1
+38,Pearline Kihn,23,F,Oceanside,CA," $8,986 ",19,102,3
+39,Leora Wisoky,23,F,New York,NY," $17,806 ",14,42,5
+40,Santa Osinski,34,F,Stamford,CT," $11,961 ",20,18,4
+41,Kenya Gerhold,89,F,Long Island City,NY," $2,739 ",21,38,3
+42,Donato Doyle,65,M,Kokomo,IN," $19,536 ",26,7,7
+43,Leonel Vandervort,43,M,Amarillo,TX," $11,287 ",11,41,2
+44,Jett Schinner,23,M,Chico,CA," $1,993 ",13,118,6
+45,Jeremie Rolfson Sr.,23,M,New Haven,CT," $2,253 ",23,32,4
+46,Lisandro Sauer,54,M,Boston,MA," $17,561 ",7,25,8
+47,Geo Witting I,54,M,Providence,RI," $18,442 ",5,103,0
+48,Ms. Evert Will,34,F,Rochester,NY," $7,702 ",7,85,4
+49,Gabriel Yundt,34,M,Mamaroneck,NY," $3,075 ",24,102,1
+50,Nichole Schumm,87,M,White Plains,NY," $2,689 ",3,36,4
+51,Minerva Mayert DVM,56,F,Edison,NJ," $19,095 ",16,3,5
+52,Toby Crona,45,M,Newark,NJ," $18,971 ",19,51,2
+53,Freeda Considine MD,43,F,Westminster,CA," $11,964 ",16,8,2
+54,Mary Harris,34,F,Napa,CA," $2,240 ",17,80,5
+55,Lila Schuster,34,,Parma,OH," $18,440 ",3,45,8
+56,Sadye Moen,,M,Lehi,UT," $12,914 ",6,70,4
+57,Kamron Romaguera,34,M,Palm Beach Gardens,FL," $4,697 ",3,35,9
+58,Adah Simonis,,M,Aliso Viejo,CA," $18,200 ",5,106,6
+59,Kelsie Weissnat,23,F,Richland,WA," $14,475 ",11,70,7
+60,Abby Haley,,F,Duluth,MI," $13,791 ",18,109,4
+61,Kadin Steuber,76,M,Tampa,FA," $4,395 ",23,19,7
+62,Jermain Maggio,55,M,Stanton,CA," $2,181 ",18,34,10
+63,Rosina Hoeger,32,F,Hamilton,OH," $13,443 ",26,86,6
+64,Walter Bailey,34,M,Oceanside,CA," $9,499 ",24,40,10
+65,Jeanne Lockman,56,F,New York,NY," $6,895 ",10,27,2
+66,Genesis Herman,76,F,Stamford,CT," $5,927 ",29,117,0
+67,Ayla Wiegand II,32,F,Long Island City,NY," $2,251 ",10,75,5
+68,Xander Kuphal,21,M,Kokomo,IN," $10,774 ",21,113,6
+69,Gennaro Witting,32,M,Amarillo,TX," $4,346 ",30,75,8
+70,Ocie Corwin,34,M,Chico,CA," $9,581 ",26,60,8
+71,Candida Doyle,56,F,New Haven,CT," $8,454 ",4,83,7
+72,Carson Crist,44,M,Boston,MA," $1,918 ",30,79,9
+73,Maybell McLaughlin,,F,Providence,RI," $2,488 ",7,106,9
+74,Damion Windler,32,M,Rochester,NY," $19,358 ",8,90,3
+75,America Wiza DVM,34,F,Mamaroneck,NY," $19,610 ",30,56,1
+76,Carlo Pfannerstill,56,M,White Plains,NY," $1,901 ",25,102,6
+77,Margie Mohr Sr.,76,F,Edison,NJ," $5,925 ",20,54,3
+78,Gilberto Veum,32,M,Newark,NJ," $6,216 ",12,46,10
+79,Jacynthe Morissette,21,F,St Charles,MO," $1,963 ",15,28,1
+80,Trey Kilback,32,M,Gulfport,MS," $1,752 ",12,85,0
+81,Athena Langosh,34,F,Madison,IL," $11,769 ",9,114,10
+82,Keara Hauck,,F,Chicago,IL," $4,512 ",21,16,5
+83,Jerry Hilll,89,M,Naperville,IL," $13,878 ",30,101,1
+84,Lera Hermann MD,65,M,Tucson,AZ," $16,185 ",14,28,0
+85,Mr. Francesca Ortiz,43,F,Phoenix,AZ," $19,639 ",11,91,6
+86,Cale Cormier IV,23,M,Las Vegas,NV," $15,694 ",8,28,8
+87,Cyril Klocko,23,M,Orlando,FL," $1,012 ",27,11,3
+88,Monroe Hackett,54,F,Washington,DC," $17,249 ",26,38,5
+89,Vernice Kiehn,54,F,Atlanta,GA," $8,127 ",29,81,1
+90,Shaina Gorczany,34,F,Cary,NC," $8,555 ",30,26,6
+91,Noemy Volkman,34,F,Charleston,SC," $4,874 ",24,87,9
+92,Violet Stamm,,F,Detroit,MI," $19,973 ",27,71,7
+93,Dustin Towne PhD,89,M,Ann Arbor,MI," $3,057 ",4,55,10
+94,Rebeka Raynor,65,F,Seattle,WA," $16,417 ",16,44,6
+95,Breanna Cormier,43,F,Eugene,OR," $6,147 ",14,120,5
+96,Ruby Wuckert,23,F,Boise,ID," $18,028 ",6,4,7
+97,Myra Reichert,23,F,Denver,CO," $12,823 ",28,3,8
+98,Jesus Pacocha,54,M,Oklahoma City,OK," $16,042 ",28,96,6
+99,Cydney Howe,54,F,Dallas,TX," $5,579 ",17,19,2
+100,Clifton Schowalter,34,M,Gary,IN," $7,621 ",21,40,9
