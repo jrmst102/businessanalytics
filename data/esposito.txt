@@ -1,0 +1,9 @@
+Start Time	End Time	LBS Applied	Specialist
+7:54 AM	8:57 AM	2.2943	Esposito
+9:22 AM	10:00 AM	1.9457	Esposito
+10:21 AM	11:23 AM	1.88	Esposito
+12:04 PM	12:37 PM	2.0495	Esposito
+1:09 PM	2:03 PM	2.5695	Esposito
+2:45 PM	3:25 PM	2.6147	Esposito
+3:44 PM	4:23 PM	3.2466	Esposito
+5:03 PM	5:43 PM	1.9987	Esposito

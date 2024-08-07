@@ -1,0 +1,6 @@
+﻿Transportation Problem,,,,
+,Per Unit Shipping Cost,,,
+,Des Moines,Kansas City,St.Louis,Supply
+Jefferson City,$14.00,$16.00,$7.00,30
+Omaha,$8.00,$10.00,$5.00,20
+Demand,25,15,10,
