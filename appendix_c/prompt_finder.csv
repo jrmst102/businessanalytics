@@ -1,0 +1,22 @@
+chapter,ai_assistant_section,ai_in_practice_box,template,template_title,prompt_labels,file
+1,Sections 1.7 and 1.9,Review Before You Rely,,(no prompt printed; the four-question audit of Section 1.9 governs every template),,
+2,Section 2.8,Ask for the Other Side,C.1,Turn a Business Request into an Analytic Specification,Prompt C.1,templates/template_C01.md
+2,Section 2.8,Ask for the Other Side,C.2,Review an Existing Analytic Specification Adversarially,Prompt C.2,templates/template_C02.md
+3,Section 3.9,"Draft the Dictionary, Audit the Draft",C.3,Draft or Audit a Data Dictionary Entry,Prompt C.3,templates/template_C03.md
+3,Section 3.9,"Draft the Dictionary, Audit the Draft",C.4,Draft Candidate Metric Definitions for Analyst Selection,Prompt C.4,templates/template_C04.md
+4,Section 4.10,"Delegate the Code, Never the Count",C.5,Draft One Data-Cleaning Step,Prompt C.5,templates/template_C05.md
+4,Section 4.10,"Delegate the Code, Never the Count",C.6,Diagnose a Python Error,Prompt C.6,templates/template_C06.md
+5,Section 5.10,The Summary That Must Add Up,C.7,Produce a Descriptive Table,Prompt C.7,templates/template_C07.md
+5,Section 5.10,The Summary That Must Add Up,C.8,Propose an Exploratory Analysis Plan,Prompt C.8,templates/template_C08.md
+6,Section 6.12,The Cluster Solution That Must Survive a Refit,C.9,Build and Validate a Segmentation,Prompt C.9; Prompt C.10,templates/template_C09.md
+7,Section 7.11,The Regression That Must Survive Its Audit,C.10,Fit and Audit a Regression,Prompt C.11; Prompt C.12,templates/template_C10.md
+8,Section 8.11,The Pipeline That Must Survive Its Audit,C.11,Draft a Predictive-Model Pipeline,Prompt C.13; Prompt C.14,templates/template_C11.md
+9,Section 9.11,The Classifier That Must Survive Its Audit,C.12,Audit a Classification or Churn Model,Prompt C.15; Prompt C.16,templates/template_C12.md
+10,Section 10.11,The Forecast You Priced Before You Ran It,C.13,Draft or Audit a Forecasting Workflow,Prompt C.17; Prompt C.18,templates/template_C13.md
+11,Section 11.11,"Preregister With the Assistant, Then Audit the Analysis Against the Registration",C.14,Draft an Experiment Registration,Prompt C.19,templates/template_C14.md
+11,Section 11.11,"Preregister With the Assistant, Then Audit the Analysis Against the Registration",C.15,Analyze and Stress-Test an Experiment,Prompt C.20; Prompt C.21,templates/template_C15.md
+11,Section 11.11,"Preregister With the Assistant, Then Audit the Analysis Against the Registration",C.19,Conduct an Adversarial Final Review,Prompt C.27,templates/template_C19.md
+12,Section 12.12,Predict the Faults Before You Look,C.16,Ask for Candidate Visual Specifications,Prompt C.22; Prompt C.23,templates/template_C16.md
+12,Section 12.12,Predict the Faults Before You Look,C.17,Audit a Chart or Tableau View,Prompt C.24,templates/template_C17.md
+13,Section 13.11,"Draft the Titles, Then Prove Them",C.18,Draft and Test Executive Communication,Prompt C.25; Prompt C.26,templates/template_C18.md
+13,Section 13.11,"Draft the Titles, Then Prove Them",C.19,Conduct an Adversarial Final Review,Prompt C.27,templates/template_C19.md

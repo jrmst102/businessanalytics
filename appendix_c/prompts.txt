@@ -1,0 +1,637 @@
+APPENDIX C - AI PROMPTING TEMPLATES FOR ANALYTICS
+Plain-text prompts, optimized for copying. Version 1.0, August 2026.
+Replace every [BRACKETED] placeholder. Send everything else as written.
+
+============================================================================
+Prompt C.1  (Template C.1: Turn a Business Request into an Analytic Specification)
+Draft an analytic specification from a business request
+============================================================================
+
+CONTEXT
+Business request, verbatim: [PASTE THE REQUEST AS IT WAS MADE]
+Who made it: [ROLE]  Deadline stated or implied: [DATE OR NONE]
+Established facts: [TWO OR THREE SENTENCES OF FACT ONLY]
+Tables available, with grain: [TABLE = ONE ROW EQUALS ONE ...]
+Fields available: [PASTE THE SCHEMA]
+
+TASK
+Draft a first version of an analytic specification with exactly these ten
+components, one short paragraph each, and nothing else:
+  1  Decision                     what choice will this analysis inform?
+  2  Decision-maker and deadline  who decides, and by when?
+  3  Analytical questions         what must be measured or compared?
+  4  Unit of analysis             what does one row represent?
+  5  Data                         what data, from where, what period?
+  6  Candidate methods            what fits the questions and the deadline?
+  7  Deliverable                  what will the decision-maker receive?
+  8  Verification plan            how will the output be checked?
+  9  Limitations and risks        what can this analysis not establish?
+ 10  AI-use plan                  where will AI assist, and how checked?
+
+CONSTRAINTS
+Use only the fields and facts supplied above.
+Where the request does not determine a component, write UNSPECIFIED and
+state the question you would need answered; do not fill it yourself.
+Identify ambiguity. Do not resolve it by assumption.
+Do not propose findings. Do not state what you expect the answer to be.
+End with a numbered list of open questions for the requester.
+
+============================================================================
+Prompt C.2  (Template C.2: Review an Existing Analytic Specification Adversarially)
+Adversarial review of a specification
+============================================================================
+
+Here is my analysis plan.
+
+[PASTE THE COMPLETED SPECIFICATION]
+
+Here is what I expect the analysis to show: [ONE SENTENCE]
+
+Act as a skeptical reviewer. Identify the weakest analytical question, one
+stakeholder I have ignored, one alternative explanation for the result I
+expect, and one verification check I have not planned.
+
+Answer as a numbered critique. Do not rewrite the plan.
+For each point, state what would have to be true for the point to matter.
+Do not raise an objection that would apply equally to any analysis plan.
+
+============================================================================
+Prompt C.3  (Template C.3: Draft or Audit a Data Dictionary Entry)
+Draft a data dictionary from a sample
+============================================================================
+
+Below is a small sample of rows from [TABLE NAME], which is course-provided
+synthetic data. The table’s grain is [ONE ROW EQUALS ONE ...].
+
+[PASTE 5 TO 10 ROWS]
+
+Draft a data dictionary entry for each column: definition, type, level of
+measurement, allowed values, and one plausible known issue. Mark any column
+where you are guessing.
+
+For each column also state the table and grain it belongs to, the source
+system or derivation rule if one is inferable, and what a missing value
+would mean.
+
+Where the sample cannot tell you the answer, write UNSPECIFIED rather than
+inferring an allowed range from the values you can see. Do not treat the
+observed values as the permitted values.
+
+============================================================================
+Prompt C.4  (Template C.4: Draft Candidate Metric Definitions for Analyst Selection)
+Define a metric in the canonical fields
+============================================================================
+
+Metric to define: [NAME AS IT IS USED IN THE ORGANIZATION]
+Decision it supports: [DECISION]
+Tables and fields available, with grain: [PASTE SCHEMA]
+Window boundary convention: [INCLUSIVE / EXCLUSIVE ON EACH END]
+
+Return the definition in exactly these fields, one line each, and nothing
+else:
+  Metric name          Business question     Formula in plain language
+  Numerator            Denominator           Window, with its boundary rule
+  Filters              Grain                 Unit
+  Required fields      Interpretation        Common variants
+  Verification
+
+RULES
+Use only the fields listed above. If the metric cannot be computed from
+them, say which field is missing and stop.
+Where more than one numerator, denominator, filter, window boundary, or
+eligibility rule is defensible, return the alternatives separately under
+Common variants. Do not select among them, and do not present one as the
+definition.
+Mark any element not determined by the business rules I supplied as
+UNSPECIFIED rather than inferring it.
+State whether the result is a proportion, a percentage, a ratio, a count, or
+a currency amount.
+Give a verification an analyst can perform by hand on ten rows.
+Do not compute the metric. Do not interpret a value.
+
+============================================================================
+Prompt C.5  (Template C.5: Draft One Data-Cleaning Step)
+Draft one cleaning step with its predicted effects
+============================================================================
+
+DATA DICTIONARY ENTRIES for the affected columns:
+[PASTE]
+
+CERTIFIED BASELINE from my verification log:
+  rows [N]   distinct orders [N]   distinct customers [N]
+  revenue [$N]   missing values in the affected columns [N]
+
+SAMPLE ROWS (course-provided synthetic data):
+[PASTE 5 TO 10 ROWS]
+
+Write pandas code to [ONE CLEANING STEP]. Before the code, state exactly
+what the step will change: which columns, how many rows affected, what the
+row count and revenue total should be afterward, and what the code
+deliberately leaves alone. If the step is a join, state the expected
+cardinality and enforce it in the code. List any rows it would drop and why.
+
+CONSTRAINTS
+Do not perform any other cleaning step.
+Do not modify the raw frame in place; assign to a new name.
+Do not choose a missing-value remedy. I have chosen [DROP | IMPUTE | FLAG]
+and you are implementing it.
+Print the row count, the revenue total, and the affected missing-value
+counts before and after.
+Use only the columns described in the dictionary entries above.
+
+============================================================================
+Prompt C.6  (Template C.6: Diagnose a Python Error)
+Diagnose an error without rewriting the cell
+============================================================================
+
+I am working in Google Colab with pandas.
+
+EXACT ERROR MESSAGE (full traceback, identifiers removed):
+[PASTE]
+
+THE SMALLEST CELL THAT REPRODUCES IT:
+[PASTE THE CELL]
+
+RELEVANT DATA TYPES AND TWO SAMPLE ROWS:
+[PASTE df.dtypes AND df.head(2)]
+
+What I expected: [ONE SENTENCE]
+What actually happened: [ONE SENTENCE]
+
+Return, in this order and nothing else:
+  1  a plain-language explanation of what the error means
+  2  the single most likely cause, given what I pasted
+  3  the smallest correction that would fix it
+  4  one check confirming the correction did not change any output I did
+     not intend to change
+
+Do not rewrite the cell to do something different from what it does now.
+Do not add cleaning, filtering, or aggregation I did not ask for.
+If the traceback is insufficient to identify the cause, say what else you
+need rather than guessing.
+
+============================================================================
+Prompt C.7  (Template C.7: Produce a Descriptive Table)
+Produce a descriptive table that must reconcile
+============================================================================
+
+DATA DICTIONARY ENTRIES:
+[PASTE]
+
+CERTIFIED TOTALS from my verification log:
+  rows [N]   distinct orders [N]   distinct customers [N]
+  total revenue [$N]
+
+Write pandas code to produce [ONE SPECIFIC TABLE]. Before the code, state:
+the unit of analysis of each output row; the exact denominator of every rate
+or proportion; which measure of center you will use and why, given that
+order value is right-skewed; and the reconciliation I should expect — which
+totals of your table must equal the certified totals above. After the code,
+print those reconciliation figures.
+
+CONSTRAINTS
+Do not narrate the table.
+Do not use a causal verb anywhere in the response.
+Do not average group means to produce an overall figure; weight them, and
+state what you weighted by.
+Report every rate with its denominator in the column name or a printed
+note.
+Use only the fields in the dictionary entries above. If the table requires
+a field I have not supplied, say so and stop.
+
+============================================================================
+Prompt C.8  (Template C.8: Propose an Exploratory Analysis Plan)
+Enumerate candidate views before modeling
+============================================================================
+
+Decision this feeds: [DECISION]
+Tables and fields available, with grain: [PASTE SCHEMA]
+What has already been established, with its source:
+[CERTIFIED FINDINGS, EACH WITH THE SECTION OR LOG ENTRY IT CAME FROM]
+
+Propose at most [SIX] tables or views worth building before any model is
+fitted. For each, state:
+  the question it answers, in one sentence
+  the fields required
+  the output grain — one row equals one what
+  the pattern you would expect if the established findings hold
+  one anomaly that would be worth investigating
+  one verification check the output must pass
+
+CONSTRAINTS
+Treat every proposal as a candidate for my specification, not as analysis.
+Do not state findings. Do not rank the proposals by how interesting you
+expect the answer to be.
+Name any proposal that requires a field I have not listed, and mark it
+UNSPECIFIED rather than assuming the field exists.
+Make the proposals differ from one another in question, not only in form.
+
+============================================================================
+Prompt C.9  (Template C.9: Build and Validate a Segmentation)
+Build the feature table and run the evaluation sweep
+============================================================================
+
+FEATURE LIST WITH DERIVATION RULES:
+[PASTE]
+POPULATION RULE: [E.G. CUSTOMERS WITH AT LEAST ONE ORDER IN THE WINDOW]
+ANALYSIS DATE: [DATE]        WINDOW: [N] MONTHS
+CERTIFIED TOTALS: revenue [$N], distinct orders [N], distinct purchasers [N]
+TREATMENT CAPACITY OF THE PLATFORM: [N DISTINCT TREATMENTS]
+
+Build [FEATURE TABLE NAME] per these rules; print the three reconciliation
+figures; fit k-means for k = 2 through 8 on standardized inputs with a fixed
+random seed; report inertias and mean silhouettes; recommend nothing yet.
+
+Use only the derivation rules above. Do not add, drop, or transform a
+feature I have not specified. Do not name or describe anything.
+
+============================================================================
+Prompt C.10  (Template C.9: Build and Validate a Segmentation)
+Fit the chosen solution and return the validation artifacts
+============================================================================
+
+I have chosen k = [K], by elbow, silhouette, and business judgment.
+Do not revisit that choice.
+
+Return, in this order and nothing else:
+  the fit on standardized inputs with seed [SEED]
+  the centroid table in standardized units and in native units
+  adjusted Rand indices across five independently seeded fits
+  adjusted Rand indices across two 80 percent subsamples
+  a profile of each cluster on these withheld attributes: [LIST]
+
+Return the fitted scaler and the fitted model as objects, not as prose
+thresholds.
+Use only the features and withheld attributes listed above.
+Do not name the clusters. Do not describe them. Do not interpret the
+profile. Do not refit at assignment time.
+
+============================================================================
+Prompt C.11  (Template C.10: Fit and Audit a Regression)
+Fit the model exactly as specified
+============================================================================
+
+VARIABLE LIST WITH DERIVATION RULES:
+[PASTE]
+DECLARED RESPONSE: [VARIABLE, IN ITS UNITS]
+REFERENCE CATEGORY: [LEVEL]
+COVARIANCE ESTIMATOR: HC3
+MODEL FORMULA, exactly as written in my specification:
+[FORMULA]
+
+Fit this model as specified with HC3 standard errors; report the coefficient
+table with 95 percent intervals in native units, the residual-versus-fitted
+plot, variance inflation factors, and R squared; change nothing in the
+specification; narrate nothing yet.
+
+============================================================================
+Prompt C.12  (Template C.10: Fit and Audit a Regression)
+Draft the reporting sentences after the model survives
+============================================================================
+
+Here is the audited coefficient table:
+[PASTE ONLY THE AUDITED NUMBERS]
+Held constant in this model: [LIST]
+
+Draft three sentences reporting these estimates as associations, using
+"is associated with" or "predicts," naming units and the held-constant
+list, and making no causal claim.
+
+Do not add a recommendation. Do not use a number that is not above.
+
+============================================================================
+Prompt C.13  (Template C.11: Draft a Predictive-Model Pipeline)
+Build the pipeline exactly as framed
+============================================================================
+
+THE FRAME
+  Unit of prediction   [ONE PREDICTION PER ...]
+  Target               [QUANTITY, UNITS, OUTCOME WINDOW]
+  Features             [FEATURE LIST WITH DERIVATION RULES]
+  Horizon              [N MONTHS]
+  Decision metric      [CAPTURE AT CAPACITY OR OTHER], against [INCUMBENT]
+  Error metrics        MAE leading, RMSE beside it, both in [UNITS]
+  Baselines            [MEAN], and [LAST-VALUE OR THE INCUMBENT LIST]
+
+THE LABEL
+  Snapshot date [DATE]; feature window [START] to [SNAPSHOT];
+  outcome window [START] to [END]; eligibility rule [RULE]
+
+THE PROTOCOL
+  Split at the unit of prediction with seed [N]; [K]-fold cross-validation
+  on the training rows only; every learned step inside a pipeline.
+
+Build this pipeline exactly as specified; select among the candidates using
+[K]-fold cross-validation on the training [UNITS] only; report one
+leaderboard with [DECISION METRIC], MAE, and RMSE for every candidate and
+both baselines; do not touch the test set; change nothing in the
+specification; narrate nothing yet.
+
+Before the code, list every feature and the window it is computed from, and
+name any feature you cannot trace to the declared feature window.
+
+============================================================================
+Prompt C.14  (Template C.11: Draft a Predictive-Model Pipeline)
+Draft the comparison paragraph after the pipeline survives
+============================================================================
+
+Here are the audited results:
+[PASTE ONLY THE AUDITED NUMBERS, INCLUDING BOTH BASELINES]
+
+Draft the comparison paragraph for a marketing VP: the model’s capture at
+the program’s capacity against the incumbent list, its test MAE against
+both baselines in dollars, and no claim that any predicted difference is
+caused by anything.
+
+Use only the numbers above. Do not add a recommendation.
+
+============================================================================
+Prompt C.15  (Template C.12: Audit a Classification or Churn Model)
+Build the classifier and grade it on ranking evidence only
+============================================================================
+
+THE LABEL, verbatim from my specification:
+[SNAPSHOT, FEATURE WINDOW, OUTCOME WINDOW, ACTIVITY RULE, BOTH ELIGIBILITY
+CONDITIONS]
+
+FEATURES with derivation rules, computed from the feature window only:
+[PASTE]
+
+PROTOCOL: split with seed [N], stratified; stratified [K]-fold
+cross-validation inside the training [UNITS].
+BASELINES: a constant-score floor and a [SINGLE-FEATURE] logistic baseline
+for the ranking comparison; [THE INCUMBENT RULE] evaluated as a fixed policy
+at its own operating point, not scored.
+THRESHOLD, derived by me from stated costs: [P]
+
+Build exactly this pipeline, and return two separate exhibits.
+
+1  RANKING LEADERBOARD. The score-producing candidates and the
+   continuous-score baselines only, selected and compared using stratified
+   [K]-fold cross-validation on the training [UNITS], graded on
+   cross-validated AUC alone. No dollar figures beside raw scores. Do not
+   place [THE INCUMBENT RULE] on this leaderboard: it emits a yes/no
+   decision, not a score, and AUC is not the instrument for it.
+
+2  POLICY COMPARISON, after calibrating only the selected model inside the
+   training data. Report its out-of-fold reliability table, then compare the
+   calibrated model at the [P] threshold against [THE INCUMBENT RULE] as a
+   fixed operating point, using the four confusion-matrix counts,
+   precision, recall, treated-list size, and cross-validated expected net
+   value under the cost assumptions above. Report precision as undefined,
+   not zero, for any policy that treats nobody.
+
+Do not touch the test set. Output scores, not verdicts. Choose no threshold
+yourself. Narrate nothing yet.
+Use only the features listed above. Name any feature you cannot trace to
+the declared feature window.
+
+============================================================================
+Prompt C.16  (Template C.12: Audit a Classification or Churn Model)
+Draft the recommendation paragraph after the classifier survives
+============================================================================
+
+Here are the audited results:
+[PASTE ONLY THE AUDITED NUMBERS]
+Cost assumptions: [TREATMENT COST], [SAVE RATE], [VALUE OF A SAVE]
+
+Draft the recommendation paragraph for a marketing VP: the model’s capture
+in the top two deciles against [THE INCUMBENT RULE]’s, the treated-list
+size at the [P] threshold with the cost assumptions stated, and no sentence
+that asserts an individual customer will churn.
+
+Use only the numbers and assumptions above.
+
+============================================================================
+Prompt C.17  (Template C.13: Draft or Audit a Forecasting Workflow)
+Build the forecast with the escape routes closed
+============================================================================
+
+SERIES      [DAILY / WEEKLY] [QUANTITY] from [CERTIFIED TABLE], reconciled
+            to [TOTAL]
+WINDOWS     rolling-origin selection through [DATE];
+            sealed holdout [START] to [END];
+            planning horizon [START] to [END]
+METRIC      MAPE with denominators asserted and the minimum printed,
+            MAE reported beside it
+OPPONENTS   seasonal-naive at period [P]; naive as the floor
+SEASONALITY fit [WEEKLY ONLY]; no annual fitting, under any circumstances
+CALENDAR    [OPENINGS, PROMOTIONS, AND HOLIDAYS IN EVERY WINDOW, WITH DATES]
+
+Compare candidates on rolling origins inside the selection window only; do
+not touch the sealed holdout until I name the method; report every candidate
+and both baselines in one table, by horizon week, with the number of errors
+behind each figure; produce [80] percent intervals and aggregate paths
+before quantiling for any weekly or total figure; narrate nothing yet.
+
+Do not shuffle. Do not use a centered window anywhere in the pipeline.
+Do not substitute a method I have not named.
+
+============================================================================
+Prompt C.18  (Template C.13: Draft or Audit a Forecasting Workflow)
+Draft the plan paragraph after the forecast survives
+============================================================================
+
+Here are the audited results and the override log:
+[PASTE ONLY THE AUDITED NUMBERS AND THE SIX-ELEMENT OVERRIDE ENTRIES]
+
+Draft the plan paragraph: the [MONTH] range under each named scenario, the
+margin over seasonal-naive in dollars, the overrides listed with owners and
+review dates.
+
+Every figure must appear above. Do not state a point without its range.
+
+============================================================================
+Prompt C.19  (Template C.14: Draft an Experiment Registration)
+Draft a preregistration with the gaps made visible
+============================================================================
+
+I am testing whether [TREATMENT] lifts [PRIMARY METRIC] among [ELIGIBLE
+POPULATION]. The columns available to me are: [PASTE SCHEMA].
+
+Draft a preregistration covering every row of the following template —
+decision, primary metric with its four elements, arms including what control
+receives, treatment dose in number of exposures, assignment mechanism, unit
+of randomization, eligible population, sample size with the power
+calculation shown, duration, planned analysis, decision rule, stopping rule,
+secondary metrics labeled exploratory, and guardrails that are computable
+from the columns I have listed.
+
+Where the information I gave you is insufficient to fill a row, write
+UNSPECIFIED and ask me; do not fill it yourself.
+
+For every guardrail you propose, name the field it would be computed from.
+Do not propose a metric, a dose, or a duration I have not supplied.
+
+============================================================================
+Prompt C.20  (Template C.15: Analyze and Stress-Test an Experiment)
+Analyze exactly as registered
+============================================================================
+
+Here is the registration.
+
+[PASTE THE DATED REGISTRATION]
+
+Analyze the attached file exactly as registered — intention-to-treat, no
+other metrics, no subgroups, one analysis. Report the assignment-flow
+counts, the control rate, the treatment rate, absolute lift in percentage
+points with a 95 percent interval on the difference, relative lift with a 95
+percent interval on the ratio computed as a ratio, and the p-value.
+Do not interpret.
+
+Do not drop any assigned unit for any reason. If units are missing an
+outcome, report the count separately and leave them in the flow table.
+
+============================================================================
+Prompt C.21  (Template C.15: Analyze and Stress-Test an Experiment)
+Argue against your own result
+============================================================================
+
+Here is the audited estimate and its interval: [PASTE]
+The test ran on [POPULATION], over [WINDOW], at a dose of [DOSE].
+The rollout under consideration is [SCOPE, DURATION, DOSE].
+
+List every reason this estimate might not transfer to that rollout, and
+every contamination path you can construct.
+
+Use only what I have described above; do not assume a fact about the
+population, the dose, or the program that I have not stated.
+Do not rank the reasons. Do not reassure me. Do not rewrite the estimate.
+
+============================================================================
+Prompt C.22  (Template C.16: Ask for Candidate Visual Specifications)
+Request candidate view specifications
+============================================================================
+
+I have [TABLE] at [GRAIN], with these columns [PASTE THE SCHEMA]. I want to
+answer this question: [QUESTION]. Propose three candidate views. For each,
+state the mark type, every field-to-channel encoding, the aggregation and
+the grain one mark represents, the axis ranges, the sort order, and the
+palette. Do not use any column not in the schema I pasted; if the question
+requires a field I have not given you, say so instead of assuming it. Do not
+render or describe conclusions.
+
+Treat every element as a proposal for my approval. For any axis range that
+does not begin at zero, state the reason in one line; do not choose a range
+to make a difference look larger.
+
+============================================================================
+Prompt C.23  (Template C.16: Ask for Candidate Visual Specifications)
+Request the palette, the footer, and the alternative text
+============================================================================
+
+For the view specified as [PASTE THE CHOSEN SPECIFICATION], produce three
+things and nothing else.
+
+1  A color-blind-safe [CATEGORICAL | SEQUENTIAL | DIVERGING] palette as an
+   explicit list of hex values, with a note on how each pair reads in
+   grayscale.
+2  The footer line, using only the values below: source table, date range,
+   filters applied, grain of aggregation, and extract refresh date.
+   [SUPPLY THE FIVE VALUES]
+3  Alternative text giving the view’s purpose, population, units, the
+   major pattern, and any material exception — without adding a causal,
+   predictive, or evaluative claim the view does not support.
+
+Do not use a red-to-green palette to carry an ordered field.
+Do not add a value I have not supplied.
+
+============================================================================
+Prompt C.24  (Template C.17: Audit a Chart or Tableau View)
+Enumerate how a finished view could mislead
+============================================================================
+
+Here is a complete description of a finished view.
+  Mark type: [ ]
+  Every field-to-channel encoding: [ ]
+  Aggregation, and the grain one mark represents: [ ]
+  Axis ranges, both axes: [ ]
+  Sort order: [ ]
+  Palette and its type: [ ]
+  Filter state, including defaults: [ ]
+  Title, subtitle, and footer as written: [ ]
+The reader is meant to conclude: [ONE SENTENCE]
+
+List every way this view could mislead that reader. Organize the list under
+these headings and nothing else:
+  grain and aggregation
+  scale and baseline
+  encoding, and the comparison the reader must make
+  color and accessibility
+  filter state, and what is not shown
+  the title’s verb, and every number in it
+
+For each item, state the change in what the reader would conclude, not the
+change to the chart.
+Use only what I described. Do not assume a field, a filter, or a value I did
+not state. Do not propose a redesign. Do not comment on taste.
+
+============================================================================
+Prompt C.25  (Template C.18: Draft and Test Executive Communication)
+Generate candidate assertion titles with verification lines
+============================================================================
+
+Here is a description of one view from a dashboard: [DESCRIPTION IN THE
+VIEW’S OWN UNITS, INCLUDING THE REFERENCE LINE, THE POPULATION IT COVERS,
+AND THE VALUES A READER CAN SEE].
+
+Write twelve candidate titles as complete sentences.
+
+Do not use any number that I have not given you. Do not assert a cause, a
+forecast, or a payback period. Do not generalize beyond the [N] [STORES /
+CUSTOMERS / PERIODS / EXPERIMENTS] represented in the view.
+For each candidate, state in a second line exactly which marks in the view a
+reader would have to look at to verify it.
+
+============================================================================
+Prompt C.26  (Template C.18: Draft and Test Executive Communication)
+Rewrite for a stated reader without losing a finding
+============================================================================
+
+Rewrite the paragraph below for [READER: ROLE, WHAT SHE ALREADY KNOWS, HOW
+LONG SHE WILL SPEND ON IT].
+
+[PASTE YOUR PARAGRAPH]
+
+Keep every interval, every threshold, every reversal condition, and every
+qualification of population, window, and dose. If you shorten a sentence,
+do not remove a clause that states a limit.
+
+Use only what is in the paragraph above. Do not introduce a number, a
+claim, or a qualification that is not already there.
+
+Return the rewrite, and beneath it a complete list of every clause you
+removed, merged, or reworded, with the original wording beside the new one.
+
+============================================================================
+Prompt C.27  (Template C.19: Conduct an Adversarial Final Review)
+Adversarial review of a finished deliverable
+============================================================================
+
+Here is a finished deliverable: [PASTE THE MEMO, THE TITLES, THE TABLE OF
+FIGURES, AND THE LIST OF VIEWS WITH THEIR GRAINS].
+
+Here is the evidence behind it: [DESIGN, WINDOW, POPULATION, AND METHOD FOR
+EACH CLAIM, AND THE INTERVAL OR BASELINE FOR EACH FIGURE].
+
+Act as a skeptical reviewer who will be blamed if this is wrong. Produce a
+numbered defect list under these headings:
+  claims not supported by the evidence described
+  a missing baseline or comparison
+  a grain that changes between a figure and the sentence about it
+  a metric used with two different definitions
+  causal or predictive verbs the evidence does not license
+  uncertainty stated nowhere
+  a number in the prose that appears in no exhibit
+  anything a reader could reasonably conclude that the evidence does not
+    support
+  sensitive or identifying data visible anywhere (a backstop; the privacy
+    screen runs before this prompt, not inside it)
+  missing AI-use documentation
+
+For each defect, quote the sentence or name the exhibit.
+Use only the deliverable and the evidence described above; do not assume
+context I have not supplied.
+Do not rewrite anything. Do not rank or score the deliverable.
+Do not raise an objection that would apply equally to any deliverable.
+End with the three questions you would ask the analyst before signing.
