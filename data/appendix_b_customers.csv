@@ -1,0 +1,9 @@
+customer_id,signup_date,home_metro,loyalty_tier,email_opt_in,app_user
+C001,2024-09-02,NYC Urban,Insider,True,True
+C002,2025-03-15,NYC Suburban,None,False,False
+C003,2024-11-20,NYC Urban,VIP,True,True
+C004,2025-08-01,NYC Urban,None,True,False
+C005,2025-10-12,NYC Urban,Insider,True,True
+C006,2025-12-04,NYC Suburban,None,False,False
+C007,2026-01-30,NYC Urban,None,True,True
+C008,2026-02-14,NYC Suburban,None,True,False
