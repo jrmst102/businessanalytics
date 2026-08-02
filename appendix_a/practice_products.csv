@@ -1,0 +1,7 @@
+product_id,category,subcategory,unit_price,unit_cost,is_occasionwear
+P0001,Dresses,Mini Dress,48.0,19.2,False
+P0002,Tops,Knit Top,32.0,12.8,False
+P0003,Occasionwear,Slip Gown,88.0,39.6,True
+P0004,Accessories,Scarf,24.0,8.4,False
+P0005,Shoes,Block Heel,76.0,34.2,False
+P0006,Occasionwear,Satin Blazer,84.0,37.8,True

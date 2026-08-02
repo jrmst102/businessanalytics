@@ -1,0 +1,9 @@
+customer_id,signup_date,acquisition_channel,home_metro,age_band,generation,email_opt_in,app_user,loyalty_tier,primary_store_id
+C000101,2024-08-12,TikTok,NYC Urban,18-24,Gen Z,True,True,Insider,S01
+C000102,2024-09-03,Instagram,NYC Urban,25-34,Gen Y,True,True,VIP,S01
+C000103,2025-05-19,In-Store,NYC Suburban,45-54,Gen Y,False,False,None,S09
+C000104,2025-06-02,Paid Search,NYC Suburban,35-44,Gen Y,True,False,None,S09
+C000105,2024-11-27,Referral,NYC Urban,25-34,Gen Y,True,True,Backstage,ONLINE
+C000106,2025-11-14,Influencer,Resort,55+,Gen Y,False,False,None,S12
+C000107,2025-01-08,Email,NYC Urban,18-24,Gen Z,True,False,Insider,ONLINE
+C000108,2026-01-21,TikTok,NYC Urban,18-24,Gen Z,True,True,None,ONLINE

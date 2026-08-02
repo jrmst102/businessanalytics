@@ -1,0 +1,52 @@
+task,command,appendix_entry
+Check where the runtime is and what it can see,"os.getcwd(), Path().glob()","A.1, A.5"
+Load a course CSV with dates parsed,"pd.read_csv(..., parse_dates=[...])",A.2
+Upload a file from your computer,files.upload(),A.3
+Use a file in Google Drive,drive.mount(),A.4
+Write a table out,".to_csv(..., index=False)","A.6, A.60"
+See how many rows and columns arrived,.shape,A.13
+See the first rows,".head(), .tail()",A.13
+Check that each column is the right type,".dtypes, .info()",A.14
+Summarize the numeric columns,.describe(),A.14
+Count missing values,.isna().sum(),"A.15, A.23"
+List the labels in a category,.value_counts(dropna=False),A.15
+Confirm a column is a key,".is_unique, .nunique()",A.16
+Keep some columns,"df[[""a"", ""b""]]",A.17
+Keep some rows,"df[condition], .isin()",A.18
+Sort reproducibly,".sort_values([measure, id])",A.19
+Build a derived column,"df[""new""] = ...",A.20
+Rename a column,.rename(columns={...}),A.21
+Recode categories,.map(dictionary),A.21
+Work on a subset safely,.copy(),A.22
+Fill or drop missing values,".fillna(), .dropna(subset=[...])",A.24
+Find duplicates,.duplicated(subset=[...]),A.25
+Turn currency text into numbers,"pd.to_numeric(..., errors=""coerce"")",A.26
+Turn text into dates,"pd.to_datetime(..., errors=""coerce"")",A.27
+"Pull year, month, or weekday out of a date",".dt.year, .dt.to_period(""M""), .dt.day_name()",A.27
+Summarize by group,".groupby(...).agg(name=(col, func))",A.29
+Count distinct orders or customers,"(""order_id"", ""nunique"")","A.29, A.31"
+Compute shares that sum to 1,col / col.sum(),A.31
+Roll lines up to orders,".groupby(""order_id"").agg(...)",A.32
+Join a dimension onto a fact table,".merge(..., validate=, indicator=)",A.33
+Find keys that did not match,set(left) - set(right),A.34
+Go wide,pd.pivot_table(),A.36
+Cross-tabulate two categories,"pd.crosstab(..., normalize=)",A.37
+Go long,.melt(),A.38
+Build a customer-grain table,two-step groupby,A.39
+Draw a distribution,"ax.hist(), ax.boxplot()","A.40, A.44"
+Compare groups,ax.bar(),A.41
+Show a trend,ax.plot(),A.42
+Show a relationship,ax.scatter(),A.43
+Add a baseline to a chart,"ax.axhline(), ax.axvline()",A.45
+Repeat a chart per group,"plt.subplots(1, n, sharey=True)",A.46
+Split into train and test,"train_test_split(..., stratify=)",A.47
+Scale and fit in one object,make_pipeline(),A.48
+Predict a number,.predict(),A.48
+Predict a probability,".predict_proba()[:, 1]",A.49
+Compare candidates on identical folds,"cross_validate(..., cv=CV)",A.50
+Fit a readable regression,"smf.ols(...).fit(cov_type=""HC3"")",A.51
+Build a scored list for a campaign,.assign(p=...).reset_index(),A.52
+Hold out the end of a time series,".loc[:cut], .loc[cut:]",A.53
+Stop the notebook when a check fails,"assert condition, ""message""",A.54
+Compare two money totals,"np.isclose(), np.allclose()",A.55
+Save a figure,"fig.savefig(..., dpi=200)",A.60

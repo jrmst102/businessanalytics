@@ -1,0 +1,58 @@
+<!doctype html><meta charset='utf-8'>
+<title>Appendix A — Command Index by Task</title>
+<style>body{font-family:Georgia,serif;max-width:44rem;margin:2rem auto;line-height:1.4}h1{font-size:1.3rem}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:.3rem .5rem;border-bottom:1px solid #ddd;font-size:.9rem}code{font-family:'Courier New',monospace;font-size:.85rem}th{border-bottom:2px solid #333}</style>
+<h1>Appendix A — Command Index by Task</h1>
+<p><em>Applied Business Analytics for Marketing Decision-Making</em> · Version 1.0 · July 2026</p>
+<table><tr><th>To do this</th><th>Use</th><th>Entry</th></tr>
+<tr><td>Check where the runtime is and what it can see</td><td><code>os.getcwd(), Path().glob()</code></td><td>A.1, A.5</td></tr>
+<tr><td>Load a course CSV with dates parsed</td><td><code>pd.read_csv(..., parse_dates=[...])</code></td><td>A.2</td></tr>
+<tr><td>Upload a file from your computer</td><td><code>files.upload()</code></td><td>A.3</td></tr>
+<tr><td>Use a file in Google Drive</td><td><code>drive.mount()</code></td><td>A.4</td></tr>
+<tr><td>Write a table out</td><td><code>.to_csv(..., index=False)</code></td><td>A.6, A.60</td></tr>
+<tr><td>See how many rows and columns arrived</td><td><code>.shape</code></td><td>A.13</td></tr>
+<tr><td>See the first rows</td><td><code>.head(), .tail()</code></td><td>A.13</td></tr>
+<tr><td>Check that each column is the right type</td><td><code>.dtypes, .info()</code></td><td>A.14</td></tr>
+<tr><td>Summarize the numeric columns</td><td><code>.describe()</code></td><td>A.14</td></tr>
+<tr><td>Count missing values</td><td><code>.isna().sum()</code></td><td>A.15, A.23</td></tr>
+<tr><td>List the labels in a category</td><td><code>.value_counts(dropna=False)</code></td><td>A.15</td></tr>
+<tr><td>Confirm a column is a key</td><td><code>.is_unique, .nunique()</code></td><td>A.16</td></tr>
+<tr><td>Keep some columns</td><td><code>df[["a", "b"]]</code></td><td>A.17</td></tr>
+<tr><td>Keep some rows</td><td><code>df[condition], .isin()</code></td><td>A.18</td></tr>
+<tr><td>Sort reproducibly</td><td><code>.sort_values([measure, id])</code></td><td>A.19</td></tr>
+<tr><td>Build a derived column</td><td><code>df["new"] = ...</code></td><td>A.20</td></tr>
+<tr><td>Rename a column</td><td><code>.rename(columns={...})</code></td><td>A.21</td></tr>
+<tr><td>Recode categories</td><td><code>.map(dictionary)</code></td><td>A.21</td></tr>
+<tr><td>Work on a subset safely</td><td><code>.copy()</code></td><td>A.22</td></tr>
+<tr><td>Fill or drop missing values</td><td><code>.fillna(), .dropna(subset=[...])</code></td><td>A.24</td></tr>
+<tr><td>Find duplicates</td><td><code>.duplicated(subset=[...])</code></td><td>A.25</td></tr>
+<tr><td>Turn currency text into numbers</td><td><code>pd.to_numeric(..., errors="coerce")</code></td><td>A.26</td></tr>
+<tr><td>Turn text into dates</td><td><code>pd.to_datetime(..., errors="coerce")</code></td><td>A.27</td></tr>
+<tr><td>Pull year, month, or weekday out of a date</td><td><code>.dt.year, .dt.to_period("M"), .dt.day_name()</code></td><td>A.27</td></tr>
+<tr><td>Summarize by group</td><td><code>.groupby(...).agg(name=(col, func))</code></td><td>A.29</td></tr>
+<tr><td>Count distinct orders or customers</td><td><code>("order_id", "nunique")</code></td><td>A.29, A.31</td></tr>
+<tr><td>Compute shares that sum to 1</td><td><code>col / col.sum()</code></td><td>A.31</td></tr>
+<tr><td>Roll lines up to orders</td><td><code>.groupby("order_id").agg(...)</code></td><td>A.32</td></tr>
+<tr><td>Join a dimension onto a fact table</td><td><code>.merge(..., validate=, indicator=)</code></td><td>A.33</td></tr>
+<tr><td>Find keys that did not match</td><td><code>set(left) - set(right)</code></td><td>A.34</td></tr>
+<tr><td>Go wide</td><td><code>pd.pivot_table()</code></td><td>A.36</td></tr>
+<tr><td>Cross-tabulate two categories</td><td><code>pd.crosstab(..., normalize=)</code></td><td>A.37</td></tr>
+<tr><td>Go long</td><td><code>.melt()</code></td><td>A.38</td></tr>
+<tr><td>Build a customer-grain table</td><td><code>two-step groupby</code></td><td>A.39</td></tr>
+<tr><td>Draw a distribution</td><td><code>ax.hist(), ax.boxplot()</code></td><td>A.40, A.44</td></tr>
+<tr><td>Compare groups</td><td><code>ax.bar()</code></td><td>A.41</td></tr>
+<tr><td>Show a trend</td><td><code>ax.plot()</code></td><td>A.42</td></tr>
+<tr><td>Show a relationship</td><td><code>ax.scatter()</code></td><td>A.43</td></tr>
+<tr><td>Add a baseline to a chart</td><td><code>ax.axhline(), ax.axvline()</code></td><td>A.45</td></tr>
+<tr><td>Repeat a chart per group</td><td><code>plt.subplots(1, n, sharey=True)</code></td><td>A.46</td></tr>
+<tr><td>Split into train and test</td><td><code>train_test_split(..., stratify=)</code></td><td>A.47</td></tr>
+<tr><td>Scale and fit in one object</td><td><code>make_pipeline()</code></td><td>A.48</td></tr>
+<tr><td>Predict a number</td><td><code>.predict()</code></td><td>A.48</td></tr>
+<tr><td>Predict a probability</td><td><code>.predict_proba()[:, 1]</code></td><td>A.49</td></tr>
+<tr><td>Compare candidates on identical folds</td><td><code>cross_validate(..., cv=CV)</code></td><td>A.50</td></tr>
+<tr><td>Fit a readable regression</td><td><code>smf.ols(...).fit(cov_type="HC3")</code></td><td>A.51</td></tr>
+<tr><td>Build a scored list for a campaign</td><td><code>.assign(p=...).reset_index()</code></td><td>A.52</td></tr>
+<tr><td>Hold out the end of a time series</td><td><code>.loc[:cut], .loc[cut:]</code></td><td>A.53</td></tr>
+<tr><td>Stop the notebook when a check fails</td><td><code>assert condition, "message"</code></td><td>A.54</td></tr>
+<tr><td>Compare two money totals</td><td><code>np.isclose(), np.allclose()</code></td><td>A.55</td></tr>
+<tr><td>Save a figure</td><td><code>fig.savefig(..., dpi=200)</code></td><td>A.60</td></tr>
+</table>

@@ -1,0 +1,4 @@
+store_id,store_name,city,state,metro,store_type,opening_date
+S01,SoHo,New York,NY,NYC Urban,Urban,2023-03-01
+S09,Greenwich,Greenwich,CT,NYC Suburban,Suburban,2025-04-15
+S12,Scottsdale,Scottsdale,AZ,Resort,Resort,2025-11-02
