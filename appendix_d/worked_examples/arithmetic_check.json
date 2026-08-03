@@ -1,0 +1,26 @@
+{
+  "source": "Chapter 9, Code 9.1 and Code 9.2 (ten-customer miniature), figures as published",
+  "checks_run": 26,
+  "all_passed": true,
+  "failures": [],
+  "threshold": 0.3,
+  "matrix_at_0_50": {
+    "TP": 2,
+    "FP": 2,
+    "FN": 1,
+    "TN": 5
+  },
+  "matrix_at_0_30": {
+    "TP": 3,
+    "FP": 3,
+    "FN": 0,
+    "TN": 4
+  },
+  "policy_net": {
+    "Treat nobody": 0.0,
+    "Model at 0.50": 32.0,
+    "Model at 0.30": 48.0,
+    "Ninety-day rule": -8.0,
+    "Treat everyone": 0.0
+  }
+}

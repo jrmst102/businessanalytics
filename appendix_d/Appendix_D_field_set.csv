@@ -1,0 +1,35 @@
+field_id,field_name,what_goes_in_it,chapter_1_source
+D1,Exchange ID,"A short stable label — E1, E2, E3 — written beside the cell, view, or paragraph the exchange produced, so the record and the work point at each other.",—
+D2,Stage,"Specify, prepare, analyze, visualize, explain, document, or review. One word; it is what makes a long log searchable.",—
+D3,Tool and version,The product name and whatever version string the interface displays. Record the access mode too when it is not the obvious one.,"Which AI tool did you use, and for which step?"
+D4,Prompt as sent,"The prompt in the words you actually sent, not a tidied reconstruction. Long prompts may be attached and referenced by location.",What prompt did you submit?
+D5,Output received,"What came back, summarized in a sentence or two, with the location of the full response if you kept it.",— (promised by the Table 1.6 note)
+D6,Prediction recorded first,"What you wrote down before the output was run or read: the row count, the total, the shape, the direction, the band. Blank is a finding.",—
+D7,Decision,"Accepted, modified, rejected, or used only to generate questions. One of the four; not a paragraph.","What did you accept, revise, or reject?"
+D8,Error or limitation found,"Technical, analytical, factual, interpretive, or communication. Name the class and the instance.",— (promised by the Table 1.6 note)
+D9,Verification performed,"The check you ran and the result: the reconciled total, the hand calculation, the rerun, the baseline, the source consulted, the reader tested.",How did you verify the final result?
+D10,Change to the final work,"What is different in the submitted artifact because of this exchange. If nothing changed, say so and say why you kept it.",—
+D11,"Analyst judgment, and what it taught you","The decision you made that the tool could not make, and the one thing the exchange changed about how you will prompt or check next time.",— (promised by the Table 1.6 note)
+V1,Claim or output checked,"The specific number, table, chart, or sentence under test — not the assignment.",
+V2,"Prediction, recorded first","What you expected, written before the check ran. A prediction written afterward verifies nothing.",
+V3,Verification method,"Reconciliation, hand calculation, rerun, baseline comparison, holdout, source check, reader test.",
+V4,Expected value or condition,"The figure or the condition that would count as a pass, stated in advance.",
+V5,Actual result,"What the check returned, in the same units.",
+V6,Verdict,"Pass, fail, or unresolved. Unresolved is a permitted verdict; a silent one is not.",
+V7,Action taken,"What you did about it. A failed check with no action is an unrepaired defect, not a completed record.",
+V8,Evidence location,"Where the evidence lives: cell, sheet, page, commit, file name.",
+T1,Product name,Whatever the interface calls itself.,
+T2,Model or version,"The version string displayed, if any. Write ""not displayed"" rather than guessing.",
+T3,Access mode,"Public web tool, institutional account, embedded in Colab, embedded in another application, or local.",
+T4,Dates used,"First and last date, or the single date.",
+T5,Purpose categories,One or more of the nine categories in Table D.8.,
+R1,"Output, claim, limitation, or suggestion","Quote it. A paraphrase usually removes the thing that made it wrong, or the ambiguity that made it worth recording.",
+R2,Disposition,"Rejected, corrected, limited, or declined. One of the four.",
+R3,Reason for disposition,"The specific defect, ambiguity, or boundary, named.",
+R4,Evidence used,What you checked it against.,
+R5,What appears in the final work,"The replacement, the correction, the stated limit, or the fact that nothing from this exchange was used.",
+G1,Member,Name.,
+G2,AI-assisted task performed,"Which exchanges, by ID.",
+G3,Verification performed,Which checks in the verification table are this member's.,
+G4,Final artifact contribution,"The cells, views, sections, or paragraphs that carry this member's work.",
+G5,Peer confirmation,The initials of a second member who has read the row and agrees with it.,
