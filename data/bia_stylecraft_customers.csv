@@ -1,0 +1,261 @@
+customer_id,signup_date,home_metro,email_opt_in,app_user
+SC0001,2024-09-25,Tri-State,True,False
+SC0002,2025-04-14,NYC Urban,False,False
+SC0003,2024-08-22,NYC Suburban,True,True
+SC0004,2024-09-20,NYC Urban,True,True
+SC0005,2024-11-20,NYC Urban,True,False
+SC0006,2025-05-20,Tri-State,False,True
+SC0007,2025-04-02,NYC Suburban,True,True
+SC0008,2023-09-09,Tri-State,True,True
+SC0009,2024-06-08,NYC Urban,True,True
+SC0010,2024-05-26,NYC Suburban,True,True
+SC0011,2024-02-01,NYC Suburban,True,False
+SC0012,2023-11-14,NYC Suburban,True,False
+SC0013,2024-11-07,NYC Suburban,True,False
+SC0014,2025-05-05,NYC Urban,False,True
+SC0015,2025-02-12,NYC Suburban,True,True
+SC0016,2024-02-16,NYC Urban,True,True
+SC0017,2024-07-04,NYC Urban,True,False
+SC0018,2023-09-05,Tri-State,True,False
+SC0019,2024-07-19,NYC Suburban,True,True
+SC0020,2024-02-29,NYC Urban,False,True
+SC0021,2025-04-26,NYC Suburban,True,False
+SC0022,2025-05-24,NYC Suburban,True,True
+SC0023,2023-12-18,NYC Urban,True,True
+SC0024,2024-07-09,NYC Suburban,True,True
+SC0025,2024-12-18,Tri-State,True,False
+SC0026,2024-09-30,Tri-State,True,False
+SC0027,2024-11-19,Tri-State,False,True
+SC0028,2024-12-17,NYC Urban,True,True
+SC0029,2024-11-25,NYC Suburban,True,False
+SC0030,2024-10-24,Tri-State,True,True
+SC0031,2024-07-12,NYC Suburban,True,True
+SC0032,2024-07-04,NYC Urban,True,False
+SC0033,2024-08-03,NYC Urban,True,True
+SC0034,2023-11-13,Tri-State,True,True
+SC0035,2025-01-06,NYC Suburban,True,False
+SC0036,2023-07-23,NYC Suburban,True,False
+SC0037,2024-01-31,Tri-State,True,False
+SC0038,2025-01-26,NYC Urban,True,False
+SC0039,2023-09-05,NYC Suburban,True,False
+SC0040,2025-04-26,NYC Suburban,True,False
+SC0041,2024-02-13,NYC Suburban,True,False
+SC0042,2024-02-23,NYC Urban,False,True
+SC0043,2023-12-06,NYC Suburban,True,True
+SC0044,2025-03-05,NYC Suburban,True,False
+SC0045,2023-11-19,NYC Suburban,True,False
+SC0046,2024-02-17,NYC Urban,True,True
+SC0047,2023-10-16,NYC Urban,False,True
+SC0048,2025-06-01,NYC Urban,True,True
+SC0049,2023-08-05,Tri-State,True,False
+SC0050,2023-09-10,NYC Suburban,False,False
+SC0051,2025-01-05,Tri-State,True,False
+SC0052,2024-11-08,NYC Urban,False,True
+SC0053,2024-05-05,NYC Suburban,True,True
+SC0054,2025-03-21,Tri-State,False,True
+SC0055,2024-08-10,Tri-State,False,False
+SC0056,2024-12-11,NYC Urban,False,True
+SC0057,2025-02-24,NYC Suburban,True,True
+SC0058,2024-06-15,Tri-State,True,False
+SC0059,2024-04-25,NYC Urban,True,True
+SC0060,2025-01-24,NYC Urban,False,True
+SC0061,2024-12-31,NYC Urban,True,True
+SC0062,2023-11-15,Tri-State,True,False
+SC0063,2024-11-20,Tri-State,True,True
+SC0064,2024-06-20,NYC Urban,False,False
+SC0065,2024-07-15,Tri-State,True,False
+SC0066,2023-11-23,NYC Urban,False,True
+SC0067,2025-05-11,NYC Urban,True,True
+SC0068,2024-04-07,NYC Suburban,True,True
+SC0069,2023-12-18,NYC Urban,True,True
+SC0070,2023-07-08,Tri-State,True,False
+SC0071,2025-02-12,NYC Urban,True,True
+SC0072,2024-09-11,NYC Urban,True,False
+SC0073,2025-03-23,NYC Urban,True,True
+SC0074,2023-10-14,Tri-State,True,True
+SC0075,2024-03-11,NYC Urban,True,False
+SC0076,2023-09-29,Tri-State,True,True
+SC0077,2024-02-19,NYC Suburban,False,True
+SC0078,2024-05-29,Tri-State,True,True
+SC0079,2023-10-13,NYC Suburban,True,False
+SC0080,2025-04-12,NYC Urban,True,True
+SC0081,2023-12-30,NYC Urban,False,True
+SC0082,2023-10-12,NYC Suburban,True,True
+SC0083,2024-02-23,Tri-State,False,False
+SC0084,2023-07-20,NYC Suburban,True,True
+SC0085,2023-09-16,NYC Urban,True,True
+SC0086,2025-04-04,NYC Urban,True,False
+SC0087,2025-03-27,NYC Urban,True,False
+SC0088,2025-02-25,NYC Urban,True,True
+SC0089,2024-11-29,Tri-State,True,False
+SC0090,2024-11-30,Tri-State,True,True
+SC0091,2023-09-03,NYC Suburban,False,False
+SC0092,2023-12-22,NYC Urban,True,True
+SC0093,2025-05-17,Tri-State,True,True
+SC0094,2024-07-31,NYC Urban,False,True
+SC0095,2024-01-26,Tri-State,True,True
+SC0096,2024-06-25,NYC Urban,True,False
+SC0097,2025-04-04,NYC Suburban,True,True
+SC0098,2024-09-29,NYC Urban,True,False
+SC0099,2024-10-14,Tri-State,True,False
+SC0100,2024-01-17,Tri-State,True,False
+SC0101,2025-02-26,Tri-State,True,True
+SC0102,2024-06-19,NYC Suburban,True,False
+SC0103,2024-10-14,Tri-State,True,True
+SC0104,2024-03-15,NYC Urban,True,True
+SC0105,2024-08-28,NYC Suburban,True,True
+SC0106,2024-07-08,NYC Suburban,True,True
+SC0107,2025-03-27,Tri-State,True,True
+SC0108,2023-11-13,Tri-State,True,False
+SC0109,2024-03-25,NYC Urban,True,True
+SC0110,2025-02-24,NYC Urban,True,True
+SC0111,2024-08-09,Tri-State,False,True
+SC0112,2024-05-21,NYC Urban,True,True
+SC0113,2024-04-25,Tri-State,True,True
+SC0114,2025-01-18,NYC Urban,True,True
+SC0115,2024-02-16,Tri-State,True,True
+SC0116,2023-09-02,Tri-State,True,True
+SC0117,2024-06-14,NYC Suburban,True,False
+SC0118,2023-10-10,NYC Suburban,True,True
+SC0119,2024-07-08,NYC Urban,False,True
+SC0120,2023-07-02,NYC Suburban,True,True
+SC0121,2024-02-21,NYC Urban,True,True
+SC0122,2023-10-28,Tri-State,False,True
+SC0123,2024-06-11,Tri-State,True,False
+SC0124,2023-09-06,NYC Suburban,False,True
+SC0125,2024-08-30,Tri-State,True,False
+SC0126,2023-10-11,Tri-State,True,False
+SC0127,2024-05-13,NYC Suburban,False,False
+SC0128,2023-11-09,Tri-State,False,True
+SC0129,2023-10-14,NYC Suburban,True,True
+SC0130,2024-04-19,NYC Suburban,False,False
+SC0131,2023-09-11,Tri-State,True,False
+SC0132,2023-12-06,NYC Suburban,False,False
+SC0133,2023-10-27,Tri-State,True,False
+SC0134,2024-10-06,NYC Suburban,True,False
+SC0135,2025-05-14,NYC Suburban,False,False
+SC0136,2023-12-30,NYC Urban,True,True
+SC0137,2024-03-05,NYC Urban,False,True
+SC0138,2024-12-07,NYC Urban,False,False
+SC0139,2024-06-13,NYC Suburban,False,False
+SC0140,2024-11-05,Tri-State,False,False
+SC0141,2023-10-16,NYC Urban,True,True
+SC0142,2023-12-07,NYC Suburban,True,False
+SC0143,2024-06-30,NYC Suburban,True,True
+SC0144,2024-01-01,Tri-State,False,False
+SC0145,2025-01-22,Tri-State,True,False
+SC0146,2023-07-09,NYC Suburban,True,True
+SC0147,2024-02-10,NYC Urban,True,False
+SC0148,2023-09-11,NYC Suburban,False,True
+SC0149,2025-01-25,NYC Urban,True,False
+SC0150,2023-07-05,Tri-State,True,False
+SC0151,2025-03-26,NYC Urban,False,False
+SC0152,2025-01-29,Tri-State,False,False
+SC0153,2023-08-08,Tri-State,True,False
+SC0154,2025-04-08,NYC Suburban,False,False
+SC0155,2023-10-11,NYC Urban,True,False
+SC0156,2024-02-25,NYC Urban,False,False
+SC0157,2023-08-01,NYC Suburban,True,False
+SC0158,2024-11-26,NYC Suburban,True,False
+SC0159,2024-02-28,NYC Urban,True,True
+SC0160,2024-01-24,NYC Suburban,True,False
+SC0161,2024-07-11,NYC Urban,True,True
+SC0162,2025-02-01,Tri-State,False,False
+SC0163,2024-10-10,NYC Suburban,True,False
+SC0164,2024-10-03,NYC Urban,True,False
+SC0165,2024-01-15,Tri-State,True,True
+SC0166,2025-05-27,NYC Urban,False,False
+SC0167,2024-12-08,Tri-State,True,False
+SC0168,2023-11-01,NYC Suburban,False,True
+SC0169,2025-04-18,Tri-State,True,False
+SC0170,2024-02-22,Tri-State,True,True
+SC0171,2023-11-16,Tri-State,True,True
+SC0172,2024-11-24,NYC Suburban,True,False
+SC0173,2024-04-23,NYC Urban,False,True
+SC0174,2024-01-08,NYC Suburban,True,False
+SC0175,2024-06-02,Tri-State,True,False
+SC0176,2025-03-11,Tri-State,False,False
+SC0177,2023-08-16,Tri-State,False,True
+SC0178,2024-11-20,NYC Suburban,True,False
+SC0179,2024-10-03,Tri-State,False,False
+SC0180,2024-11-21,NYC Suburban,True,False
+SC0181,2026-06-10,NYC Urban,True,True
+SC0182,2026-05-11,NYC Suburban,False,False
+SC0183,2026-05-27,NYC Suburban,True,True
+SC0184,2026-04-14,NYC Suburban,True,True
+SC0185,2026-05-31,NYC Urban,True,True
+SC0186,2026-05-05,Tri-State,True,True
+SC0187,2026-04-22,NYC Suburban,True,True
+SC0188,2026-04-21,NYC Urban,True,True
+SC0189,2026-04-18,NYC Urban,True,False
+SC0190,2026-04-01,NYC Urban,True,False
+SC0191,2026-05-21,NYC Urban,True,True
+SC0192,2026-04-10,NYC Urban,True,True
+SC0193,2026-06-07,Tri-State,True,True
+SC0194,2026-05-06,Tri-State,True,True
+SC0195,2026-05-31,Tri-State,True,True
+SC0196,2026-04-19,NYC Suburban,True,True
+SC0197,2026-04-29,Tri-State,True,True
+SC0198,2026-05-14,NYC Urban,True,True
+SC0199,2026-04-15,NYC Suburban,True,True
+SC0200,2026-04-12,NYC Urban,True,True
+SC0201,2026-05-18,Tri-State,True,False
+SC0202,2026-05-24,NYC Urban,True,False
+SC0203,2026-05-31,NYC Urban,True,True
+SC0204,2026-04-15,NYC Suburban,True,True
+SC0205,2026-05-16,NYC Urban,True,False
+SC0206,2026-05-10,NYC Urban,False,True
+SC0207,2026-05-19,Tri-State,True,True
+SC0208,2026-04-30,NYC Urban,False,True
+SC0209,2026-04-03,NYC Urban,True,True
+SC0210,2026-04-21,Tri-State,True,True
+SC0211,2026-05-15,NYC Urban,True,True
+SC0212,2026-04-24,NYC Suburban,True,True
+SC0213,2026-05-23,NYC Suburban,True,True
+SC0214,2026-05-17,Tri-State,True,False
+SC0215,2026-05-19,Tri-State,True,False
+SC0216,2026-05-30,NYC Urban,True,True
+SC0217,2026-05-07,NYC Suburban,True,False
+SC0218,2026-06-06,NYC Urban,True,True
+SC0219,2026-04-11,Tri-State,False,True
+SC0220,2026-06-07,Tri-State,True,False
+SC0221,2026-06-03,Tri-State,True,True
+SC0222,2026-04-25,NYC Urban,False,True
+SC0223,2026-06-01,NYC Suburban,True,False
+SC0224,2026-05-15,NYC Suburban,True,True
+SC0225,2026-06-05,Tri-State,True,False
+SC0226,2026-04-27,NYC Suburban,True,False
+SC0227,2026-04-22,NYC Suburban,False,True
+SC0228,2026-06-10,NYC Suburban,True,True
+SC0229,2026-05-11,Tri-State,True,True
+SC0230,2026-05-13,Tri-State,True,False
+SC0231,2026-06-02,Tri-State,True,False
+SC0232,2026-04-08,NYC Suburban,True,True
+SC0233,2026-04-15,NYC Urban,True,True
+SC0234,2026-05-24,Tri-State,True,True
+SC0235,2026-04-24,NYC Urban,True,False
+SC0236,2026-04-13,NYC Suburban,True,True
+SC0237,2026-06-03,NYC Suburban,True,True
+SC0238,2026-04-20,Tri-State,True,True
+SC0239,2026-05-21,NYC Urban,True,False
+SC0240,2026-05-31,NYC Suburban,True,True
+SC0241,2026-04-12,NYC Suburban,True,False
+SC0242,2026-05-14,Tri-State,True,True
+SC0243,2026-06-16,NYC Urban,True,False
+SC0244,2026-04-04,NYC Urban,True,True
+SC0245,2026-05-24,NYC Suburban,True,True
+SC0246,2026-05-26,Tri-State,True,True
+SC0247,2026-04-19,NYC Urban,True,True
+SC0248,2026-03-24,Tri-State,True,True
+SC0249,2026-05-12,NYC Urban,False,False
+SC0250,2026-05-26,NYC Urban,True,True
+SC0251,2026-03-03,NYC Suburban,True,False
+SC0252,2026-04-07,NYC Urban,True,False
+SC0253,2026-05-20,NYC Urban,True,False
+SC0254,2026-05-10,Tri-State,True,True
+SC0255,2026-04-11,NYC Suburban,True,False
+SC0256,2026-06-21,NYC Urban,True,True
+SC0257,2026-03-05,NYC Urban,True,True
+SC0258,2026-05-19,NYC Urban,False,False
+SC0259,2026-04-01,Tri-State,True,False
+SC0260,2026-05-14,NYC Suburban,False,True
