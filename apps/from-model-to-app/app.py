@@ -8,7 +8,6 @@ import traceback
 
 import matplotlib
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 import streamlit as st
 
@@ -551,7 +550,7 @@ def show_prediction(p, data):
 def tab_final(data):
     S = st.session_state
     st.subheader('Final evaluation and managerial interpretation')
-    if S.final is None and S.candidates and not S.selection:
+    if S.final is None and S.candidates:
         recommended = models.select_model(S.candidates)
         st.markdown('**Interpretation so far (validation evidence only)**')
         r = S.candidates[recommended]['result']
