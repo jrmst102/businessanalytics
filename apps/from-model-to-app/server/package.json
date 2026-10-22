@@ -1,0 +1,18 @@
+{
+  "name": "from-model-to-app-dashboard",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Node.js web interface for the Mancino classroom dashboard; the Python engine API serves all model results.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.9",
+    "compression": "^1.7.5",
+    "express": "^4.21.2"
+  }
+}

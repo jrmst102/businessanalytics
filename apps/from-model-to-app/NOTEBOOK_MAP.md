@@ -27,7 +27,7 @@ the same development data, at `rtol=1e-7, atol=1e-7`.
 
 | Source (notebook, section/cell) | Engine function | Changes made to extract | Analytical behavior |
 |---|---|---|---|
-| Final, `final-002` imports and `SEED` | module header, constants | Dropped plotting/IPython/Colab imports (display lives in `app.py`). Added `hashlib`, `platform`, `warnings` for the reproducibility record and warning capture. | Unchanged |
+| Final, `final-002` imports and `SEED` | module header, constants | Dropped plotting/IPython/Colab imports (display lives in the wrapper). Added `hashlib`, `platform`, `warnings` for the reproducibility record and warning capture. | Unchanged |
 | Final, `final-004` load and validate | `load_data`, `describe_data`, `dataset_checksum` | GitHub download and Colab `files.upload()` removed; the approved CSV is bundled (`DATA_PATH`). Each `assert` became a `ValueError`/`FileNotFoundError` with the notebook's message. `display(df.head())` removed; the Data tab shows the table. | Unchanged (same checks, same sort order) |
 | Final, `final-006` features and split | `prepare_data`, constants `CATEGORICAL`, `NUMERIC`, `FEATURES`, `TARGET` | Module globals `X_train`, `y_val`, ... are returned in a dictionary with the same names. Added `stores`/`categories` lists for input validation. | Unchanged |
 | Final, `final-009` `make_pipeline` | `make_pipeline` | Copied as-is: `OneHotEncoder(handle_unknown='ignore', sparse_output=False)` on the categoricals; `StandardScaler` or passthrough on `day_of_year`. | Unchanged |
@@ -41,7 +41,7 @@ the same development data, at `rtol=1e-7, atol=1e-7`.
 | (new, wrapper adaptation) | `make_prediction_row`, `predict_one` | Builds a one-row DataFrame in `FEATURES` order (weekday and day of year derived from the date exactly as in `final-006`) and calls the fitted pipeline's `.predict`. | Uses the classroom `.predict` |
 | (new) reproducibility | `environment_record`, `run_identity`, `DATA_SHA256` | Records dataset checksum, versions, seed, parameters, feature order, split boundaries and fit/evaluation periods. | n/a |
 
-Input validation (`inputs.py`) and all display/state code (`app.py`) are wrapper
+Input validation (`inputs.py`) and all display/state code (`engine_api.py`, `server/`) are wrapper
 code with no notebook counterpart.
 
 ## Documented adaptations (authorized by the instructor)
@@ -68,12 +68,16 @@ code with no notebook counterpart.
    reporting changes only; fitted models and predictions are untouched. The
    classroom MAE remains in the reference notebooks and does not drive any app
    ranking or benchmark.
-4. **Display and input handling moved to the wrapper.** All Streamlit imports,
-   session state, forms, the three tabs, the footer, typed-input validation
-   (`inputs.py`) and every plot/table render live in `app.py`; `models.py`
-   contains no display code and no Streamlit import. The "Code from class"
-   expander reads the engine functions with `inspect.getsource`, so there is
-   no second executable implementation.
+4. **Display and input handling moved to the wrapper.** All session state,
+   forms, the three tabs, the footer, typed-input validation (`inputs.py`) and
+   every table/chart render live in the wrapper — the Python engine API
+   (`engine_api.py`) and the Node.js web app (`server/`); `models.py` contains
+   no display code and no web-framework import. The "Code from class" panel
+   reads the engine functions with `inspect.getsource`, so there is no second
+   executable implementation. (The interface was originally the specification's
+   Streamlit wrapper; at the instructor's direction it was replaced by a
+   Node.js web interface over the same engine. The engine, presets, metrics and
+   behaviors are unchanged, which the parity and API tests verify.)
 
 ## Source review of the companion notebooks
 

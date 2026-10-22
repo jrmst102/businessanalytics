@@ -1,33 +1,36 @@
 # Business Analytics in Action: From Model to App
 
-A local, browser-based teaching dashboard for the Mancino regression unit.
-Explore the dataset, choose **one** classroom model (KNN, regression tree, random
-forest, neural network, or the averaging ensemble) with its classroom parameter,
-train it, read its four test metrics (R², MSE, RMSE, MAPE), then type a store,
-category and date to get one prediction from the same fitted model.
+A teaching dashboard for the Mancino regression unit. Explore the dataset,
+choose **one** classroom model (KNN, regression tree, random forest, neural
+network, or the averaging ensemble) with its classroom parameter, train it,
+read its four test metrics (R², MSE, RMSE, MAPE), then type a store, category
+and date to get one prediction from the same fitted model.
 
+The interface is a Node.js web app; every number it shows comes from the
+Python classroom engine (`models.py`), served through a small engine API.
 The dataset (Mancino Market) is **synthetic** teaching data. See `data/SOURCE.md`.
 
 ## What is in this folder
 
 | File | Role |
 |---|---|
-| `models.py` | The classroom engine: preprocessing, model constructors, fitting, metrics and prediction, extracted from the Mancino notebooks. Readable without knowing Streamlit. |
-| `app.py` | The three-tab dashboard (Streamlit): rendering, forms, session state, footer. Calls `models.py`; defines no models. |
+| `models.py` | The classroom engine: preprocessing, model constructors, fitting, metrics and prediction, extracted from the Mancino notebooks. Readable without knowing the web stack. |
 | `inputs.py` | Validation of the typed store, category, date and optional actual units. |
-| `launch.py` | Starts the local dashboard and opens your browser. |
-| `DEPLOY.md` | Instructor-only: hosting an optional shared copy on DigitalOcean App Platform. |
+| `engine_api.py` | Python API around the engine (Flask): dataset, train, predict, code-from-class. Keeps one fitted model per browser session. Defines no models. |
+| `server/` | Node.js web server (Express) and the three-tab dashboard (plain HTML/CSS/JS). Proxies `/api/*` to the engine API; contains no analytics logic. |
+| `launch.py` | Starts both processes locally and opens your browser. |
 | `run_engine.py` | Fits one configuration from the command line (developer convenience). |
-| `requirements.txt` | Pinned, tested dependencies. |
+| `requirements.txt` | Pinned, tested Python dependencies. `server/package.json` pins the Node side. |
+| `Dockerfile`, `start.sh` | Hosted deployment image (used by DigitalOcean; not needed locally). |
 | `NOTEBOOK_MAP.md` | Which notebook cell became which function, and every adaptation made. |
-| `VERIFICATION.md` | Parity, metric, input and three-tab behavior evidence. |
 | `data/mancino_daily_sales.csv`, `data/SOURCE.md` | Approved offline data snapshot and its provenance. |
-| `tests/` | Model-parity, metric, input and application checks. |
+| `tests/` | Model-parity, metric, input and interface checks. |
 
 ## First-time setup
 
-You need Python 3.12 (3.11–3.13 should also work; 3.12 is the verified version).
-Run the commands from a terminal opened in this folder (`apps/from-model-to-app`).
+You need **Python 3.12** (3.11–3.13 should also work; 3.12 is the verified
+version) and **Node.js 18 or newer** (<https://nodejs.org>). Run the commands
+from a terminal opened in this folder (`apps/from-model-to-app`).
 
 **Windows (PowerShell)**
 
@@ -35,6 +38,7 @@ Run the commands from a terminal opened in this folder (`apps/from-model-to-app`
 py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
+npm install --prefix server
 ```
 
 If PowerShell refuses to run the activation script, run
@@ -47,11 +51,12 @@ with `.\.venv\Scripts\activate.bat`.
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
+npm install --prefix server
 ```
 
 Installation needs the internet once. After that the app runs offline: the data
-file is bundled. You do not reinstall dependencies on later launches — just
-activate the environment and launch.
+file and all web assets are bundled. You do not reinstall dependencies on later
+launches — just activate the environment and launch.
 
 ## Launch the dashboard
 
@@ -61,18 +66,19 @@ With the virtual environment activated:
 python launch.py
 ```
 
-The launcher starts the app on `http://localhost:8501` (this computer only),
-opens your default browser, and prints the link in case the browser does not
-open. Stop it with `Ctrl+C` in the terminal. It works from any working
-directory, e.g. `python path/to/launch.py`.
+The launcher starts the engine API on port 8000 and the dashboard on
+`http://localhost:8080` (this computer only), opens your default browser, and
+prints the link in case the browser does not open. Stop it with `Ctrl+C` in the
+terminal. It works from any working directory, e.g. `python path/to/launch.py`.
 
-Options: `python launch.py --port 8600` if 8501 is busy; `--no-browser` to only
-print the link.
+Options: `python launch.py --port 8090 --engine-port 8010` if the defaults are
+busy; `--no-browser` to only print the link.
 
-**Manual fallback** if the launcher cannot be used:
+**Manual fallback** if the launcher cannot be used (two terminals):
 
 ```bash
-python -m streamlit run app.py --server.address 127.0.0.1 --server.port 8501
+python engine_api.py --port 8000
+node server/server.js            # uses PORT=8080 and ENGINE_URL=http://127.0.0.1:8000
 ```
 
 Note: viewing this folder on GitHub displays the code; it does not run the app.
@@ -100,6 +106,7 @@ Clone or download the repository and follow the steps above.
 Training only happens when you press **Train model**. Typing inputs, switching
 tabs or changing view filters never retrains anything. Only the currently
 selected model's results are shown; there is no leaderboard or comparison.
+Each browser session has its own fitted model.
 
 ## The models (classroom settings)
 
@@ -128,20 +135,35 @@ python -m pytest tests -q
 ```
 
 The parity tests refit every allowed configuration and compare it against the
-direct classroom implementation on the same development data; the full suite
-takes several minutes on the reference machine (see `VERIFICATION.md` for
-timings). For a quick check, run
-`python -m pytest tests/test_engine.py tests/test_inputs.py tests/test_app_smoke.py -q`.
+direct classroom implementation on the same development data (about a minute on
+the reference machine). For a quick check, run
+`python -m pytest tests/test_engine.py tests/test_inputs.py tests/test_api.py -q`.
+
+## Hosted copy (instructor only)
+
+Students who cannot install Python/Node can use the hosted copy instead. The
+repository root contains `.do/app.yaml`, a DigitalOcean App Platform spec that
+builds `Dockerfile` here (one container running both processes, health check on
+`/healthz`, port 8080). Create the app in the DigitalOcean console from this
+GitHub repo — or update an existing app via Settings → App Spec — and give
+students the resulting `...ondigitalocean.app` URL. Each browser session trains
+its own model; all students share the instance's CPU.
 
 ## Troubleshooting
 
 - **`Missing Python packages: ...`** — the virtual environment is not active or
   the install step was skipped. Activate it and run
   `python -m pip install -r requirements.txt`.
-- **`Port 8501 is already in use`** — another dashboard is still running. Close
-  it or use `python launch.py --port 8600`.
+- **`Node.js was not found`** — install Node.js 18+ from <https://nodejs.org>
+  and reopen the terminal.
+- **`The web server packages are not installed yet`** — run
+  `npm install --prefix server` once.
+- **`Port ... is already in use`** — another dashboard is still running. Close
+  it or use `python launch.py --port 8090 --engine-port 8010`.
 - **Browser did not open** — copy the printed `http://localhost:...` link into
   your browser.
+- **"The engine API is not reachable" in the page** — start the app with
+  `python launch.py` (it runs both required processes).
 - **`Dataset not found`** — restore `data/mancino_daily_sales.csv` from the link
   in `data/SOURCE.md`; the checksum must match.
 - **Neural-network convergence warning** — shown beside the affected result; try
@@ -149,9 +171,10 @@ timings). For a quick check, run
 - **`python` not found on Windows** — use `py -3.12` instead of `python` for the
   setup commands.
 - **Training feels slow** — the ensemble fits four models and takes the longest
-  (roughly half a minute on the reference machine); a progress message is shown.
+  (several seconds on the reference machine); a status message is shown.
 
 ## Reference environment
 
 Verified on Linux (dev container, Ubuntu 24.04) with Python 3.12.3,
-scikit-learn 1.8.0, NumPy 2.3.5, pandas 2.2.3, Streamlit 1.66.1.
+scikit-learn 1.8.0, NumPy 2.3.5, pandas 2.2.3, Flask 3.1.2, waitress 3.0.2,
+Node.js 24 (any ≥18 works), Express 4.

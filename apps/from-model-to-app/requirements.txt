@@ -1,9 +1,12 @@
 # Tested runtime for apps/from-model-to-app (Python 3.12).
 # The engine pins match the environment used to verify notebook parity.
+# The web interface is Node.js (see server/package.json); these packages run
+# the classroom engine and its API.
 scikit-learn==1.8.0
 numpy==2.3.5
 pandas==2.2.3
-streamlit==1.66.1
+flask==3.1.2
+waitress==3.0.2
 # Tests only (matplotlib is required to execute the reference notebook cells)
 pytest>=8
 matplotlib==3.10.9

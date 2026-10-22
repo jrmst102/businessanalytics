@@ -1,0 +1,8 @@
+# Keep the image small: local environments, caches and tests stay out.
+.venv/
+server/node_modules/
+__pycache__/
+.pytest_cache/
+tests/
+Dockerfile
+.dockerignore

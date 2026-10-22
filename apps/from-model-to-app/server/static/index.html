@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Business Analytics in Action: From Model to App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Business Analytics in Action: From Model to App</h1>
+    <p class="subtitle">Explore the Mancino data, train one classroom regression model, and type
+      inputs to get a prediction. <strong>The dataset is synthetic teaching data.</strong></p>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Dashboard tabs">
+    <button class="tab active" role="tab" aria-selected="true" data-tab="data">Data</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="model">Model</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="test">Test</button>
+  </nav>
+
+  <main>
+    <!-- ----------------------------- Data tab ----------------------------- -->
+    <section id="tab-data" class="tab-panel" role="tabpanel">
+      <h2>The Mancino dataset</h2>
+      <p>Mancino Market is a <strong>synthetic</strong> grocery retailer: fictional daily unit
+        sales for five stores and fifteen product categories, used throughout the course.
+        Source: <a id="source-link" href="#" target="_blank" rel="noopener">mancino_daily_sales.csv</a>
+        (v1_2025-11-01 snapshot, bundled offline; see <code>data/SOURCE.md</code>).</p>
+      <p id="dataset-facts" class="facts">Loading dataset…</p>
+
+      <h3>Variable dictionary — what the model predicts and what it uses</h3>
+      <table class="dictionary">
+        <thead><tr><th>Field</th><th>Meaning</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td>units_sold</td><td>Daily units for one store and category</td><td><strong>Prediction target</strong></td></tr>
+          <tr><td>store_id</td><td>Store identifier (1–5), treated as text</td><td>Model input (categorical)</td></tr>
+          <tr><td>category</td><td>Product category</td><td>Model input (categorical)</td></tr>
+          <tr><td>weekday</td><td>Derived from date in Python</td><td>Model input (categorical)</td></tr>
+          <tr><td>day_of_year</td><td>Derived from date</td><td>Model input (numeric)</td></tr>
+          <tr><td>date</td><td>Selling date</td><td>Derives weekday and day_of_year; sets the date splits</td></tr>
+          <tr><td>revenue</td><td>Realized revenue</td><td>Visible only — contains the outcome, never an input</td></tr>
+          <tr><td>avg_price</td><td>Observed daily average price</td><td>Visible only — not known before the selling day</td></tr>
+          <tr><td>day_of_week</td><td>Weekday in the source file</td><td>Visible only — weekday is recomputed from date</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Browse the data</h3>
+      <p class="muted">These filters change the view only; they never change model fitting or
+        evaluation data.</p>
+      <div class="filters">
+        <label>Store (view filter)
+          <select id="filter-stores" multiple size="5" aria-label="Store view filter"></select>
+        </label>
+        <label>Category (view filter)
+          <select id="filter-categories" multiple size="5" aria-label="Category view filter"></select>
+        </label>
+        <label>Search table text (store, category or weekday)
+          <input id="filter-search" type="text" autocomplete="off">
+        </label>
+      </div>
+      <div class="table-wrap"><table id="data-table"></table></div>
+      <p id="table-caption" class="muted"></p>
+
+      <h3>Total units sold per day <span class="muted">(across the stores and categories in view)</span></h3>
+      <div class="chart-wrap"><canvas id="sales-chart" height="90"></canvas></div>
+    </section>
+
+    <!-- ----------------------------- Model tab ---------------------------- -->
+    <section id="tab-model" class="tab-panel hidden" role="tabpanel">
+      <h2>Choose one model, train it, read its results</h2>
+      <div class="controls">
+        <label>Model
+          <select id="model-choice"></select>
+        </label>
+        <label><span id="parameter-label">Parameter</span>
+          <select id="model-parameter"></select>
+        </label>
+      </div>
+      <p><strong>How it predicts:</strong> <span id="how-it-predicts"></span></p>
+      <p id="ensemble-note" class="muted hidden"></p>
+      <button id="train-button" class="primary">Train model</button>
+      <p id="train-status" class="status" role="status"></p>
+
+      <div id="model-results" class="hidden">
+        <div class="metric-cards">
+          <div class="metric-card"><div class="metric-label">R²</div><div class="metric-value" id="metric-r2"></div></div>
+          <div class="metric-card"><div class="metric-label">MSE</div><div class="metric-value" id="metric-mse"></div></div>
+          <div class="metric-card"><div class="metric-label">RMSE</div><div class="metric-value" id="metric-rmse"></div></div>
+          <div class="metric-card"><div class="metric-label">MAPE</div><div class="metric-value" id="metric-mape"></div></div>
+        </div>
+        <div id="metric-notes"></div>
+        <p id="interpretation"></p>
+        <p id="provenance" class="muted"></p>
+        <p id="historical-note" class="note"></p>
+      </div>
+      <p id="no-results" class="hint">No results yet for this configuration. Click “Train model”
+        to fit it on the development dates and see its four test metrics.</p>
+
+      <details id="code-from-class">
+        <summary>Code from class</summary>
+        <pre><code id="engine-source"></code></pre>
+        <p class="muted">Read directly from models.py — the dashboard has no second copy of the
+          model code.</p>
+      </details>
+    </section>
+
+    <!-- ----------------------------- Test tab ----------------------------- -->
+    <section id="tab-test" class="tab-panel hidden" role="tabpanel">
+      <h2>Test the model with a typed observation</h2>
+      <p id="test-gate" class="hint">Train a model in the Model tab before making a prediction.</p>
+
+      <div id="test-form" class="hidden">
+        <p>The four performance metrics were computed on historical held-out rows. Typing a store,
+          category and date below produces <strong>one new forecast</strong> with the same fitted
+          model; it never retrains the model or changes the historical metrics.</p>
+        <details>
+          <summary>Valid stores and categories</summary>
+          <p id="valid-stores"></p>
+          <p id="valid-categories"></p>
+        </details>
+        <button id="use-example" type="button">Use example</button>
+        <div class="controls">
+          <label>Store ID
+            <input id="input-store" type="text" placeholder="e.g. 3" autocomplete="off">
+          </label>
+          <label>Product category
+            <input id="input-category" type="text" placeholder="e.g. Bakery" autocomplete="off">
+          </label>
+          <label>Date (YYYY-MM-DD)
+            <input id="input-date" type="text" placeholder="2025-10-15" autocomplete="off">
+          </label>
+          <label>Actual units (optional)
+            <input id="input-actual" type="text" autocomplete="off"
+                   title="Only for evaluating this one example; never a model input.">
+          </label>
+        </div>
+        <button id="predict-button" class="primary">Predict</button>
+        <div id="predict-errors" role="alert"></div>
+        <div id="prediction" class="hidden"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">Business Analytics and Data Visualization Fall 2026 - Prof. Jose Mendoza</footer>
+
+  <script src="/vendor/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,32 +1,26 @@
 # DigitalOcean App Platform specification for the classroom dashboard.
-# Deploys apps/from-model-to-app as a hosted Streamlit web service straight
-# from this GitHub repository. The local workflow (python launch.py) is
-# unchanged; this file is only read by DigitalOcean.
+# Deploys apps/from-model-to-app (Node.js web interface + Python engine API)
+# as one Docker-based web service straight from this GitHub repository. The
+# local workflow (python launch.py) is unchanged; this file is only read by
+# DigitalOcean.
 #
-# Use: DigitalOcean console -> Create App -> import this repo (it detects
-# .do/app.yaml), or: doctl apps create --spec .do/app.yaml
+# Use: DigitalOcean console -> Create App -> import this repo, or:
+#   doctl apps create --spec .do/app.yaml
+# For an existing app: Settings -> App Spec -> replace the services section
+# with this one (keep the existing top-level name).
 name: from-model-to-app
 region: nyc
 services:
   - name: dashboard
-    environment_slug: python
+    dockerfile_path: apps/from-model-to-app/Dockerfile
+    source_dir: apps/from-model-to-app
     github:
       repo: jrmst102/businessanalytics
       branch: main
       deploy_on_push: true
-    source_dir: apps/from-model-to-app
-    run_command: >-
-      streamlit run app.py
-      --server.port 8080
-      --server.address 0.0.0.0
-      --server.headless true
-      --browser.gatherUsageStats false
     http_port: 8080
     instance_count: 1
     instance_size_slug: apps-s-1vcpu-1gb
     health_check:
-      http_path: /_stcore/health
-      initial_delay_seconds: 20
-    envs:
-      - key: PYTHON_VERSION
-        value: "3.12"
+      http_path: /healthz
+      initial_delay_seconds: 30
