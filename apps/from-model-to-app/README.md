@@ -139,5 +139,4 @@ The full suite takes about one and a half minutes on the reference machine.
 ## Reference environment
 
 Verified on Linux (dev container, Ubuntu 24.04) with Python 3.12.3, scikit-learn 1.8.0,
-NumPy 2.3.5, pandas 2.2.3, matplotlib 3.10.9, Streamlit 1.66.1. Windows and macOS launch checks
-are listed as pending in `VERIFICATION.md`.
+NumPy 2.3.5, pandas 2.2.3, matplotlib 3.10.9, Streamlit 1.66.1.
