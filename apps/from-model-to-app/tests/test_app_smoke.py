@@ -1,11 +1,10 @@
-"""Dashboard smoke test with Streamlit's headless AppTest.
+"""Dashboard behavior test with Streamlit's headless AppTest.
 
-Drives the real app: train a preset, run the comparison, freeze, finalize and
-make a typed prediction, then checks the displayed prediction equals the
-engine's direct ``.predict`` on the same fitted pipeline.
+Drives the real app: checks the three-tab layout and footer, trains one
+configuration, verifies the four metric cards, makes a typed prediction equal
+to the engine's direct ``.predict`` on the same fitted pipeline, and checks
+that model/parameter changes clear stale results and disable prediction.
 """
-import re
-
 import pytest
 from streamlit.testing.v1 import AppTest
 
@@ -14,9 +13,12 @@ from conftest import APP_DIR
 
 pytest.importorskip('streamlit')
 
+FOOTER = 'Business Analytics and Data Visualization Fall 2026 - Prof. Jose Mendoza'
+METRIC_LABELS = ['R²', 'MSE', 'RMSE', 'MAPE']
+
 
 def _app():
-    at = AppTest.from_file(str(APP_DIR / 'app.py'), default_timeout=300)
+    at = AppTest.from_file(str(APP_DIR / 'app.py'), default_timeout=600)
     return at.run()
 
 
@@ -26,44 +28,51 @@ def _button(at, label):
     return matches[0]
 
 
-def test_dashboard_renders_without_training():
+def test_initial_launch_three_tabs_footer_no_results():
     at = _app()
     assert not at.exception
     assert at.title[0].value == 'Business Analytics in Action: From Model to App'
-    assert any('synthetic' in m.value.lower() for m in at.markdown)
-    assert any('No performance result yet' in i.value for i in at.info)
+    # Exactly three tabs, in order.
+    assert [tab.label for tab in at.tabs] == ['Data', 'Model', 'Test']
+    # The exact footer on every tab.
+    assert [c.value for c in at.caption].count(FOOTER) == 3
+    # Exactly the five allowed model choices; KNN default; no result yet.
+    selector = at.selectbox(key='model_choice')
+    assert selector.options == models.MODEL_CHOICES and selector.value == 'KNN regression'
+    assert len(at.metric) == 0 and at.session_state['active'] is None
+    assert any('Train a model in the Model tab' in i.value for i in at.info)
+    # None of the removed version-1 actions exist.
+    labels = {b.label for b in at.button}
+    assert labels <= {'Train model', 'Use example', 'Predict'}
+    assert 'Run classroom comparison' not in labels and 'Predict' not in labels
 
 
-def test_full_student_flow():
+def test_parameter_control_follows_the_selected_model():
     at = _app()
-    # B: train one preset (KNN k=5) via the form; baseline is fitted alongside.
-    at.radio(key='family_choice').set_value('KNN').run()
-    at.selectbox[0].set_value(5)
-    _button(at, 'Train and evaluate').click().run()
+    def visible_param_keys():
+        return [s.key for s in at.selectbox if s.key and s.key.startswith('param_')]
+    assert visible_param_keys() == ['param_KNN regression']
+    assert at.selectbox(key='param_KNN regression').value == 15
+    at.selectbox(key='model_choice').set_value('Ensemble regression').run()
+    assert visible_param_keys() == ['param_Ensemble regression']
+    assert at.selectbox(key='param_Ensemble regression').value == 'Equal weights'
     assert not at.exception
-    candidates = at.session_state['candidates']
-    assert set(candidates) == {models.BASELINE_NAME, 'KNN (k=5)'}
-    assert at.session_state['final'] is None
 
-    # B: full comparison -> 15 candidates.
-    _button(at, 'Run classroom comparison').click().run()
-    assert not at.exception
-    candidates = at.session_state['candidates']
-    assert models.is_complete_comparison(candidates)
-    expected = models.select_model(candidates)
 
-    # C: freeze the recommendation (default selection) and finalize.
-    _button(at, 'Freeze this specification for final evaluation').click().run()
+def test_train_predict_and_invalidation_flow(data):
+    at = _app()
+    # Train the default KNN (k=15).
+    _button(at, 'Train model').click().run()
     assert not at.exception
-    assert at.session_state['selection']['name'] == expected
-    assert at.session_state['selection']['kind'] == 'validation-best recommendation'
-    _button(at, 'Finalize selected model and evaluate on test dates').click().run()
-    assert not at.exception
-    final = at.session_state['final']
-    assert final['selected_name'] == expected and at.session_state['test_inspected'] is True
-    assert any('Test performance: model refitted on development dates' in m.value for m in at.markdown)
+    active = at.session_state['active']
+    assert active is not None and active['config'] == ('KNN regression', 15)
+    # Exactly four model-performance cards, in order.
+    assert [m.label for m in at.metric] == METRIC_LABELS
+    # Displayed metrics come from the retained fitted pipeline on the test rows.
+    scores = models.evaluate_model(data['y_test'], active['pipeline'].predict(data['X_test']))
+    assert scores['RMSE'] == pytest.approx(active['scores']['RMSE'])
 
-    # D: typed prediction with the finalized model equals direct .predict().
+    # Typed prediction equals direct engine .predict on the same fitted object.
     at.session_state['store_text'] = '3'
     at.session_state['category_text'] = ' bakery '
     at.session_state['date_text'] = '2025-10-15'
@@ -73,24 +82,20 @@ def test_full_student_flow():
     p = at.session_state['last_prediction']
     row = models.make_prediction_row('3', 'Bakery', '2025-10-15')
     assert p['values']['category'] == 'Bakery'
-    assert p['predicted'] == float(final['final_model'].predict(row)[0])
+    assert p['predicted'] == models.predict_one(at.session_state['active']['pipeline'], row)
     shown = [m.value for m in at.markdown if 'Predicted daily sales' in m.value]
-    assert shown and re.search(rf"{p['predicted']:.2f}", shown[0])
+    assert shown and f"{p['predicted']:.2f}" in shown[0]
 
-    # Invalid input never reaches .predict and shows a useful message.
+    # Invalid typed inputs never reach .predict and give helpful errors.
     at.session_state['store_text'] = '9'
     at.session_state['date_text'] = '15/10/2025'
     _button(at, 'Predict').click().run()
     assert any('Valid stores' in e.value for e in at.error)
     assert any('YYYY-MM-DD' in e.value for e in at.error)
 
-    # Refitting a member invalidates ensembles and supersedes the final result.
-    at.radio(key='family_choice').set_value('KNN').run()
-    at.selectbox[0].set_value(50)
-    at.checkbox[0].check()
-    _button(at, 'Train and evaluate').click().run()
+    # A parameter change clears the fit, metrics and prediction.
+    at.selectbox(key='param_KNN regression').set_value(5).run()
     assert not at.exception
-    assert models.EQUAL_ENSEMBLE_NAME not in at.session_state['candidates']
-    if expected in models.ENSEMBLE_NAMES or expected == 'KNN (k=50)':
-        assert at.session_state['final']['superseded'] is True
-    assert at.session_state['test_inspected'] is True
+    assert at.session_state['active'] is None and at.session_state['last_prediction'] is None
+    assert len(at.metric) == 0
+    assert any('Train a model in the Model tab' in i.value for i in at.info)

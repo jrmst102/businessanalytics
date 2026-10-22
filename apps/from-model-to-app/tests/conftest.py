@@ -1,4 +1,4 @@
-"""Shared fixtures: the engine run once, and the reference notebook executed once."""
+"""Shared fixtures: the engine data, a fitted-result cache, and the notebook's data cells."""
 import json
 import os
 import sys
@@ -14,10 +14,8 @@ os.environ.setdefault('MPLBACKEND', 'Agg')
 
 import models  # noqa: E402
 
-# Code cells executed for parity, in notebook order. Plot-only cells are skipped.
-NOTEBOOK_CELLS = ['final-002', 'final-004', 'final-006', 'final-009', 'final-011',
-                  'final-013', 'final-015', 'final-017', 'final-019', 'final-021',
-                  'final-023', 'final-025']
+# Data-preparation cells of the final notebook, executed verbatim for parity.
+DATA_CELLS = ['final-002', 'final-004', 'final-006']
 
 
 @pytest.fixture(scope='session')
@@ -26,23 +24,29 @@ def data():
 
 
 @pytest.fixture(scope='session')
-def candidates(data):
-    return models.run_classroom_comparison(data)
+def fitted_cache():
+    """One engine fit per configuration, shared across parity and behavior tests."""
+    return {}
 
 
 @pytest.fixture(scope='session')
-def final(data, candidates):
-    name = models.select_model(candidates)
-    return models.finalize_model(name, models.clone(candidates[name]['specification']), data)
+def fit_once(fitted_cache, data):
+    def _fit(choice, parameter):
+        key = (choice, str(parameter))
+        if key not in fitted_cache:
+            estimator, _ = models.build_model(choice, parameter)
+            fitted_cache[key] = models.fit_selected_model(estimator, data)
+        return fitted_cache[key]
+    return _fit
 
 
 @pytest.fixture(scope='session')
 def notebook_ns():
-    """Execute the reference notebook's code cells verbatim and return its namespace.
+    """Execute the final notebook's data cells verbatim and return its namespace.
 
     Only non-analytical pieces are replaced: ``display``/``Markdown`` stubs for
-    IPython, the Colab upload import is never reached because the local CSV
-    exists, and plots render to the Agg backend.
+    IPython, and the Colab upload import is never reached because the local CSV
+    exists. Plots render to the Agg backend.
     """
     if not NOTEBOOK_PATH.exists():
         pytest.skip(f'Reference notebook not found at {NOTEBOOK_PATH}')
@@ -52,7 +56,7 @@ def notebook_ns():
     previous_cwd = os.getcwd()
     os.chdir(models.DATA_PATH.parent)  # so the notebook's LOCAL_CSV path resolves
     try:
-        for cell_id in NOTEBOOK_CELLS:
+        for cell_id in DATA_CELLS:
             source = cells[cell_id].replace('from IPython.display import display, Markdown', '')
             exec(compile(source, cell_id, 'exec'), namespace)
     finally:

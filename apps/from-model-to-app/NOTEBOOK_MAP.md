@@ -1,67 +1,98 @@
 # Notebook-to-engine map
 
-Traceability from the classroom notebooks to `models.py`. The authoritative source is
-`notebooks/Mancino_Regression_Final.ipynb` (the integrated notebook). The individual
-notebooks supply explanatory text and were checked for consistency (see "Source review").
+Traceability from the classroom notebooks to `models.py` for the version 2.0 app
+(three tabs: Data, Model, Test; one selected model at a time). The authoritative
+sources are the supplied notebooks in `notebooks/`; cell identifiers such as
+`final-006` refer to `Mancino_Regression_Final.ipynb`.
 
 Reference versions (SHA-256 prefix of the files in `notebooks/` on 2026-10-22):
 
 | Notebook | SHA-256 (first 16) | Role |
 |---|---|---|
-| `Mancino_Regression_Final.ipynb` | `224a1852bfbfa93f` | Authoritative engine source |
-| `Mancino_Regression_KNN_Complete.ipynb` | `91a1d32f11edf9cf` | KNN explanation |
-| `Mancino_Regression_Trees.ipynb` | `6c103adf57cb9c96` | Tree explanation (spec lists `..._Trees_Complete`; this is the supplied file) |
-| `Mancino_Random_Forests_Complete.ipynb` | `a636a365b1af1303` | Forest explanation |
-| `Mancino_Neural_Networks_Complete.ipynb` | `9579590b655a9e14` | Network explanation |
-| `Mancino_Ensemble.ipynb` | `cd519958f41edaf8` | Ensemble explanation (spec lists `..._Ensemble_Complete`; this is the supplied file) |
+| `Mancino_Regression_Final.ipynb` | `224a1852bfbfa93f` | Shared feature preparation, date splits, development-set refit |
+| `Mancino_Regression_KNN_Complete.ipynb` | `91a1d32f11edf9cf` | KNN model and explanation |
+| `Mancino_Regression_Trees.ipynb` | `6c103adf57cb9c96` | Regression-tree model (spec lists `..._Trees_Complete`; this is the supplied file) |
+| `Mancino_Random_Forests_Complete.ipynb` | `a636a365b1af1303` | Random-forest model and explanation |
+| `Mancino_Neural_Networks_Complete.ipynb` | `9579590b655a9e14` | Network construction, scaling, early stopping |
+| `Mancino_Ensemble.ipynb` | `cd519958f41edaf8` | Fixed member configurations and equal/weighted averaging (spec lists `..._Ensemble_Complete`; this is the supplied file) |
 
-Environment in which the notebooks were executed for parity: Python 3.12.3, scikit-learn 1.8.0,
-NumPy 2.3.5, pandas 2.2.3 (pinned in `requirements.txt`). The only stored environment record in
-the supplied notebooks is in `Mancino_Regression_Notebook.ipynb`/`_Starter.ipynb`
-(`pandas 2.2.3 | scikit-learn 1.6.1`); the final and companion notebooks were saved without outputs.
-The three stored validation MAEs there (baseline 13.223, KNN k=15 8.741, tree depth 6 8.594) match
-the engine to three decimals, so the 1.6.1 -> 1.8.0 difference did not change these results.
+Environment used for parity: Python 3.12, scikit-learn 1.8.0, NumPy 2.3.5,
+pandas 2.2.3 (pinned in `requirements.txt`).
 
-## Cell-by-cell map
+## Source-to-function map
 
-"Behavior unchanged" below means the parity tests in `tests/test_notebook_parity.py` compare the
-engine against the notebook cells executed verbatim and pass at `rtol=1e-7, atol=1e-7`.
+"Predictions unchanged" means `tests/test_notebook_parity.py` compares the engine
+against the same specification written out verbatim from the notebook, refitted on
+the same development data, at `rtol=1e-7, atol=1e-7`.
 
-| Cell | Engine function(s) | Changes made to extract | Analytical behavior |
+| Source (notebook, section/cell) | Engine function | Changes made to extract | Analytical behavior |
 |---|---|---|---|
-| `final-002` imports, `SEED`, `np.random.seed` | module header, constants | Dropped `io`, `IPython.display`, `matplotlib` (plots live in `app.py`). Added `hashlib`, `platform`, `warnings` for the reproducibility record and warning capture. `RUN_FINAL_TEST` flag replaced by the dashboard's explicit "Finalize" action. | Unchanged |
-| `final-004` load and validate | `load_data`, `describe_data`, `dataset_checksum` | GitHub download and Colab `files.upload()` removed; the approved CSV is bundled (`DATA_PATH`). Each `assert` became a `ValueError`/`FileNotFoundError` with the notebook's message so a bad file yields an actionable error. `display(df.head())` removed; the app shows the table. | Unchanged (same checks, same sort order) |
-| `final-006` features and split | `prepare_data`, constants `CATEGORICAL`, `NUMERIC`, `FEATURES`, `TARGET` | Module globals `X_train`, `y_val` ... are returned in a dictionary with the same names. `display(...)` of the partition table replaced by the returned `partitions` DataFrame. Added `stores`/`categories` lists for input validation. | Unchanged |
-| `final-007` training plots | `app.py` tab A | Plot-only cell; rendered by the dashboard over the view filter instead of training only. Not part of the engine. | n/a |
-| `final-009` `make_pipeline`, `metrics`, `clear_family`, `fit_and_evaluate`, `best_in_family` | same names | `fit_and_evaluate` takes `data` instead of reading globals and returns one `candidate` dictionary (fitted model, specification clone, validation predictions, result row, warnings) instead of writing to the three global dictionaries; `display(...)` removed. Warnings are captured with `warnings.catch_warnings(record=True)` so the app can show convergence warnings beside the result. A `Settings` text column was added to the result row for the leaderboard. `clear_family`/`best_in_family` take the candidates dictionary as an argument. | Unchanged |
-| `final-011` baseline | `make_baseline` | Constructor wrapped in a one-line function. | Unchanged |
-| `final-013` KNN presets | `make_knn`, `K_VALUES` | Loop body became a constructor function; the loop lives in `individual_candidates`. The `k <= len(X_train)` assertion is implied by the fixed presets. | Unchanged |
-| `final-015` tree presets | `make_tree`, `TREE_DEPTHS`, `MIN_LEAF` | Same as above. | Unchanged |
-| `final-017` forest presets | `make_forest`, `FOREST_SIZES` | Same as above. | Unchanged |
-| `final-019` network presets | `make_network`, `NETWORK_LAYERS` | Same as above; `print('Training epochs', ...)` became `candidate['training_epochs']`. | Unchanged |
-| `final-021` family winners and ensembles | `family_winners`, `make_ensemble`, `ensemble_candidates`, `normalized_weights`, `residual_correlations`, `ENSEMBLE_WEIGHTS` | Members are `clone(candidate['specification'])` rather than `clone(models[name])`; both yield an unfitted estimator with identical parameters. `family_winners` additionally refuses to run unless all 12 presets are present (the notebook ran them all by construction). `display(...)` removed. | Unchanged |
-| `final-023` leaderboard and selection | `results_table`, `leaderboard`, `select_model`, `ensemble_gain`, `is_complete_comparison` | `results_table` rebuilds the notebook's `results` dict in `CANDIDATE_ORDER` so `min(...)` keeps the notebook's tie behavior even if a student trained candidates in a different order. The bar chart is drawn by `app.py`. | Unchanged |
-| `final-025` final refit, test, diagnostics | `finalize_model`, `segment_errors` | `RUN_FINAL_TEST` gate replaced by the explicit app action; the function receives the frozen specification. Results returned in a dictionary; `display(...)` and plots moved to `app.py`. | Unchanged |
-| `final-027` managerial briefing | `managerial_briefing` | Returns the Markdown string instead of `display(Markdown(...))`. One guard added: WAPE is printed as "undefined" when the denominator is zero. | Unchanged templates |
-| (new) typed prediction | `make_prediction_row`, `predict_one` | Wrapper for the typed-input exercise: builds a one-row DataFrame in `FEATURES` order (weekday and day of year derived from the date exactly as in `final-006`) and calls the fitted pipeline's `.predict`. | Uses the classroom `.predict` |
+| Final, `final-002` imports and `SEED` | module header, constants | Dropped plotting/IPython/Colab imports (display lives in `app.py`). Added `hashlib`, `platform`, `warnings` for the reproducibility record and warning capture. | Unchanged |
+| Final, `final-004` load and validate | `load_data`, `describe_data`, `dataset_checksum` | GitHub download and Colab `files.upload()` removed; the approved CSV is bundled (`DATA_PATH`). Each `assert` became a `ValueError`/`FileNotFoundError` with the notebook's message. `display(df.head())` removed; the Data tab shows the table. | Unchanged (same checks, same sort order) |
+| Final, `final-006` features and split | `prepare_data`, constants `CATEGORICAL`, `NUMERIC`, `FEATURES`, `TARGET` | Module globals `X_train`, `y_val`, ... are returned in a dictionary with the same names. Added `stores`/`categories` lists for input validation. | Unchanged |
+| Final, `final-009` `make_pipeline` | `make_pipeline` | Copied as-is: `OneHotEncoder(handle_unknown='ignore', sparse_output=False)` on the categoricals; `StandardScaler` or passthrough on `day_of_year`. | Unchanged |
+| KNN notebook / `final-013` | `make_knn` | Loop body became a constructor function; the allowed k values are the classroom presets `[5, 15, 50]`. | Unchanged |
+| Trees notebook / `final-015` | `make_tree` | Same; depths `[3, 6, 12]`, `min_samples_leaf=30`, `random_state=42`. | Unchanged |
+| Forests notebook / `final-017` | `make_forest` | Same; sizes `[50, 100, 200]` with the fixed forest settings. | Unchanged |
+| Networks notebook / `final-019` | `make_network` | Same; architectures `[(16,), (32,), (32, 16)]`, `TransformedTargetRegressor(..., transformer=StandardScaler())`, early stopping on a random 15% of the fitting data. `print('Training epochs', ...)` became `result['training_epochs']`. | Unchanged |
+| Ensemble notebook, `base_estimators` + `WEIGHTS` cells | `ensemble_member_estimators`, `make_ensemble`, `ENSEMBLE_WEIGHTS`, `ENSEMBLE_MEMBERS` | The standalone notebook's **fixed** members (KNN k=50; tree depth 12; forest 100 trees; network (16,)) in its order and `model_0..3` names; `VotingRegressor(..., n_jobs=1)`; weights `[1, 1, 2, 2]` for the weighted preset. | Unchanged |
+| Final, `final-025` development refit | `fit_selected_model` | The `RUN_FINAL_TEST` gate and the prior selection machinery are replaced by the app's explicit "Train model" action for the one chosen specification: concatenate training + validation, fit a clone, predict the test rows, compute metrics, retain the fitted pipeline. The baseline refit, diagnostics tables and plots of that cell are not part of this app. | Unchanged for the fitted specification |
+| Final/companions, `metrics` cell | `evaluate_model` | Replaces the notebooks' MAE/RMSE/R² reporting with the app's four metrics (see adaptations 3 below). Metrics operate on the same raw predictions in original sales units. | Reporting changed as authorized; predictions unchanged |
+| (new, wrapper adaptation) | `make_prediction_row`, `predict_one` | Builds a one-row DataFrame in `FEATURES` order (weekday and day of year derived from the date exactly as in `final-006`) and calls the fitted pipeline's `.predict`. | Uses the classroom `.predict` |
 | (new) reproducibility | `environment_record`, `run_identity`, `DATA_SHA256` | Records dataset checksum, versions, seed, parameters, feature order, split boundaries and fit/evaluation periods. | n/a |
 
-Input validation (`inputs.py`) is wrapper code with no notebook counterpart.
+Input validation (`inputs.py`) and all display/state code (`app.py`) are wrapper
+code with no notebook counterpart.
+
+## Documented adaptations (authorized by the instructor)
+
+1. **Manual student choice replaces automatic model selection.** The final
+   notebook evaluates 15 candidates on validation data and selects the lowest
+   validation MAE before its test refit. The app removes that search entirely:
+   the student picks one of five model choices and one classroom preset, and
+   "Train model" performs the final notebook's development-set refit directly
+   for that specification. No leaderboard, baseline, family winners,
+   `select_model`, or comparison exists in the app.
+2. **Fixed classroom ensemble members replace family-winner searching.** The
+   app's ensemble uses the standalone ensemble notebook's fixed members (KNN
+   k=50; tree depth 12; forest 100 trees; network (16,)) rather than the final
+   notebook's validation-winner search. On the approved snapshot the final
+   notebook's winners happen to be exactly these four configurations, so the
+   two sources agree numerically.
+3. **MSE and MAPE reporting.** The notebooks report MAE, RMSE and R². The app
+   shows R², MSE, RMSE and MAPE for the selected model. MSE is
+   `mean_squared_error`; MAPE averages `abs((actual - predicted)/actual)` over
+   rows with positive actual sales only (zero-sales rows are excluded from
+   MAPE alone and their count disclosed; all-zero actuals give "N/A"). R² is
+   reported as undefined when the actual values are constant. These are
+   reporting changes only; fitted models and predictions are untouched. The
+   classroom MAE remains in the reference notebooks and does not drive any app
+   ranking or benchmark.
+4. **Display and input handling moved to the wrapper.** All Streamlit imports,
+   session state, forms, the three tabs, the footer, typed-input validation
+   (`inputs.py`) and every plot/table render live in `app.py`; `models.py`
+   contains no display code and no Streamlit import. The "Code from class"
+   expander reads the engine functions with `inspect.getsource`, so there is
+   no second executable implementation.
 
 ## Source review of the companion notebooks
 
-The companion notebooks use the same loading, splitting, preprocessing and metric code as the
-final notebook. The only constructor differences are explicitly written scikit-learn defaults,
-which do not change behavior:
+The companion notebooks use the same loading, splitting, preprocessing and
+constructor code as the final notebook. The only constructor differences are
+explicitly written scikit-learn defaults, which do not change behavior:
 
 - KNN notebook adds `metric='euclidean'` (default).
 - Trees and forests notebooks add `criterion='squared_error'` (default).
 - Neural-network notebook adds `tol=0.0001` (default).
-- `Mancino_Ensemble.ipynb` uses fixed members (KNN k=50, tree depth 12, forest 100 trees,
-  network (16,)). The final notebook selects members by validation MAE; on the approved
-  snapshot the selected members are exactly these four, so the two notebooks agree.
 
-`Mancino_Regression_Notebook.ipynb` and `Mancino_Regression_Starter.ipynb` are earlier
-teaching versions (forest `min_samples_leaf=10`, standardized day of year for trees) and are not
-among the spec's authoritative sources; they were not used for the engine.
+`Mancino_Regression_Notebook.ipynb` and `Mancino_Regression_Starter.ipynb` are
+earlier teaching versions (forest `min_samples_leaf=10`, standardized day of
+year for trees) and are not among the spec's authoritative sources; they were
+not used for the engine.
 
+**Open discrepancy note for the instructor:** the supplied files are named
+`Mancino_Regression_Trees.ipynb` and `Mancino_Ensemble.ipynb`, while the
+specification lists `Mancino_Regression_Trees_Complete.ipynb` and
+`Mancino_Ensemble_Complete.ipynb`. Their contents match the specification's
+parameter inventory, so the engine was built from them; confirm they are the
+approved versions.

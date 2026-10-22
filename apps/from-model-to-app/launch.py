@@ -14,7 +14,7 @@ import webbrowser
 from pathlib import Path
 
 APP_PATH = Path(__file__).resolve().parent / 'app.py'
-REQUIRED = ['streamlit', 'sklearn', 'pandas', 'numpy', 'matplotlib']
+REQUIRED = ['streamlit', 'sklearn', 'pandas', 'numpy']
 
 
 def missing_dependencies():
