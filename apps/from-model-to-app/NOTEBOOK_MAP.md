@@ -65,12 +65,3 @@ which do not change behavior:
 teaching versions (forest `min_samples_leaf=10`, standardized day of year for trees) and are not
 among the spec's authoritative sources; they were not used for the engine.
 
-**Unresolved discrepancies:** none that change predictions or evaluation.
-
-## Items needing instructor confirmation
-
-1. The spec's filenames `Mancino_Regression_Trees_Complete.ipynb` and
-   `Mancino_Ensemble_Complete.ipynb` were not present; `Mancino_Regression_Trees.ipynb` and
-   `Mancino_Ensemble.ipynb` were used. Their code matches the final notebook as described above.
-2. The notebooks' own environment is not recorded (no saved outputs). Parity was established by
-   executing them in the pinned environment listed above.
