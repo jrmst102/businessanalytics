@@ -16,6 +16,7 @@ The dataset (Mancino Market) is **synthetic** teaching data. See `data/SOURCE.md
 | `app.py` | The three-tab dashboard (Streamlit): rendering, forms, session state, footer. Calls `models.py`; defines no models. |
 | `inputs.py` | Validation of the typed store, category, date and optional actual units. |
 | `launch.py` | Starts the local dashboard and opens your browser. |
+| `DEPLOY.md` | Instructor-only: hosting an optional shared copy on DigitalOcean App Platform. |
 | `run_engine.py` | Fits one configuration from the command line (developer convenience). |
 | `requirements.txt` | Pinned, tested dependencies. |
 | `NOTEBOOK_MAP.md` | Which notebook cell became which function, and every adaptation made. |
