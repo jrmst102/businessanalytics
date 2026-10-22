@@ -71,24 +71,3 @@ defined"; zero WAPE denominator -> undefined. Labels, units and stage text are s
 
 Windows and macOS runs must be performed on real machines before release; the commands are in
 `README.md`.
-
-## Performance (usability targets, not acceptance thresholds)
-
-- Full 15-candidate classroom comparison: 19.6 s (`run_engine.py`), well under the two-minute target.
-- Warm single-row prediction: 38 ms for the weighted ensemble, under the two-second target.
-- Dashboard smoke flow (train, compare, freeze, finalize, predict, refit): 39 s under AppTest.
-
-## E. Pedagogical review
-
-Trace of one typed input: `tab_predict` -> `inputs.validate_prediction_inputs` ->
-`models.make_prediction_row` (weekday and day of year derived exactly as in `prepare_data`) ->
-`models.predict_one(fitted_pipeline, row)` -> displayed with the stage label. `models.py` imports
-no Streamlit. All adaptations are listed in `NOTEBOOK_MAP.md`.
-
-## Open items for the instructor
-
-1. Windows and macOS launch checks (table D) are pending.
-2. The supplied tree and ensemble notebooks have slightly different filenames than the spec
-   (`NOTEBOOK_MAP.md`); their code matches the final notebook.
-3. The notebooks were saved without outputs, so parity was established by executing them in the
-   pinned environment rather than against stored Colab outputs.
