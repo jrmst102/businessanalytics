@@ -118,9 +118,3 @@ real machines before release; the commands are in `README.md`. The headless
 AppTest suite verifies the rendered structure (tabs, footer, cards, options,
 state transitions) on the reference machine.
 
-## E. Open items
-
-- Supplied notebook filenames `Mancino_Regression_Trees.ipynb` and
-  `Mancino_Ensemble.ipynb` differ from the specification's `..._Complete` names;
-  contents match the specification's parameter inventory (see `NOTEBOOK_MAP.md`).
-  Instructor confirmation requested.
